@@ -4,8 +4,4 @@ class RecipePolicy < ApplicationPolicy
       scope.all
     end
   end
-
-  def index?
-    true
-  end
 end

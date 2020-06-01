@@ -9,16 +9,12 @@
           <h2><%= recipe.name %></h2>
           <p><%= recipe.description[0..80] %>...</p>
           <div class="listing-item-tags">
-            <div class="listing-item-tag">
-              ingredient
+            <% recipe.ingredients.each do |ingredient| %>
+              <div class="listing-item-tag">
+                <%= ingredient.name %>
+              </div>
+            <% end %>
             </div>
-            <div class="listing-item-tag">
-              ingredient
-            </div>
-            <div class="listing-item-tag">
-              ingredient
-            </div>
-          </div>
         </div>
         <div class="listing-item-expand">See more</div>
       </div>

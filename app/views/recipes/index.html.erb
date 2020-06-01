@@ -4,7 +4,7 @@
   <div class="listing">
     <% @recipes.each do |recipe| %>
       <div class="listing-item">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <%= image_tag recipe.url %>
         <div class="listing-item-infos">
           <h2><%= recipe.name %></h2>
           <p><%= recipe.description[0..80] %>...</p>

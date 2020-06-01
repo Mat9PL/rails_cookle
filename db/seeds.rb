@@ -25,7 +25,8 @@ end
   recipe = Recipe.new(
     name: name,
     description: description,
-    rating: rating
+    rating: rating,
+    url: "https://ichef.bbci.co.uk/food/ic/food_16x9_448/recipes/babaganoush_78707_16x9.jpg"
     )
     recipe.save!
     

@@ -7,7 +7,18 @@
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <div class="listing-item-infos">
           <h2><%= recipe.name %></h2>
-          <p><%= recipe.description %></p>
+          <p><%= recipe.description[0..80] %>...</p>
+          <div class="listing-item-tags">
+            <div class="listing-item-tag">
+              ingredient
+            </div>
+            <div class="listing-item-tag">
+              ingredient
+            </div>
+            <div class="listing-item-tag">
+              ingredient
+            </div>
+          </div>
         </div>
         <div class="listing-item-expand">See more</div>
       </div>

@@ -10,6 +10,7 @@ Recipe.destroy_all
 Ingredient.destroy_all
 
 ingredients = %w(eggplant potato egg pasta onion)
+ingredients.sort!
 
 ingredients.each do |ingredient|
   ingredient = Ingredient.new(name: ingredient)

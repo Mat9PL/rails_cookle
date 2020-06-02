@@ -26,7 +26,8 @@ end
     name: name,
     description: description,
     rating: rating,
-    url: "https://ichef.bbci.co.uk/food/ic/food_16x9_448/recipes/babaganoush_78707_16x9.jpg"
+    url_image: "https://ichef.bbci.co.uk/food/ic/food_16x9_448/recipes/babaganoush_78707_16x9.jpg",
+    url: "https://www.bbc.co.uk/food/recipes/baba_ganoush_grilled_50988"
     )
     recipe.save!
     

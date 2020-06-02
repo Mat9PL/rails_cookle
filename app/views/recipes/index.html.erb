@@ -4,7 +4,7 @@
   <div class="listing">
     <% @recipes.each do |recipe| %>
       <div type="button" class="listing-item" data-toggle="modal" data-target="#exampleModalCenter">
-        <%= image_tag recipe.url %>
+        <%= image_tag recipe.url_image %>
         <div class="listing-item-infos">
           <h2><%= recipe.name %></h2>
           <p><%= recipe.description[0..80] %>...</p>

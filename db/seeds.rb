@@ -14,8 +14,7 @@ def destroy_all_data
   Ingredient.destroy_all
 end
 
-
-def generate_fake_data
+def generate_ingredients
   ingredients = ['eggplant', 'potato', 'egg', 'pasta', 'onion', 'shrimp 🦐' ]
   ingredients.sort!
   
@@ -23,6 +22,10 @@ def generate_fake_data
     ingredient = Ingredient.new(name: ingredient)
     ingredient.save!
   end
+end
+
+
+def generate_fake_recipes
   
   20.times do
     name = Faker::Food.dish
@@ -53,7 +56,7 @@ def generate_fake_data
 end
 
 
-def scrape_BBC_good_food(keyword)
+def scrape_bbc_good_food(keyword)
   # find results for keyword
   html_file = open("https://www.bbcgoodfood.com/search/recipes?query=#{keyword}").read
   nokogiri_file_search_results = Nokogiri::HTML(html_file)
@@ -63,23 +66,40 @@ def scrape_BBC_good_food(keyword)
     recipe.attribute('href').value
   end
 
-  # open each page
-  nokogiri_files_recipes = recipe_urls.map do |url|
-    html_file = open("https://www.bbcgoodfood.com/#{url}").read
-    Nokogiri::HTML(html_file)
-  end
-
-  recipes = nokogiri_files_recipes.map do |nokogiri_file|
+  # open each page and it transform into object
+  recipes = recipe_urls.map do |url|
+    file_url = "https://www.bbcgoodfood.com/#{url}"
+    html_file = open(file_url).read
+    nokogiri_file = Nokogiri::HTML(html_file)
     recipe = {
       name: nokogiri_file.search('h1').text.strip,
-      url_image: nokogiri_file.search('.img-container .ratio-11-10 img'),
-      description: nokogiri_file.search('.method__item p').map { |element| element.text.strip }.join("\n")
-  }
-    recipe
+      url_image: nokogiri_file.search('.ratio-11-10 img')[0].attributes['src'].value,
+      description: nokogiri_file.search('.method__item p').map { |element| element.text.strip }.join(" "),
+      url: file_url,
+    }
   end
   recipes
 end
 
-p scrape_BBC_good_food('aubergine')[0]
-p scrape_BBC_good_food('aubergine')[1]
+destroy_all_data
 
+generate_ingredients
+
+bbc_food_recipes = scrape_bbc_good_food('aubergine')
+
+ingredients_text =""
+
+bbc_food_recipes.each do |recipe|
+  new_recipe = Recipe.new(recipe)
+  new_recipe.save!
+
+  # below: create doses
+  file_url = new_recipe.url
+  html_file = open(file_url).read
+  nokogiri_file = Nokogiri::HTML(html_file)
+  ingredients_text = nokogiri_file.search('.ingredients-list__item').map { |element| element.text.strip }.join(" ")
+  if ingredients_text.include?("aubergine")
+    new_dose = Dose.new(recipe: new_recipe, ingredient: Ingredient.where(:name === "eggplant")[0])
+    new_dose.save!
+  end
+end

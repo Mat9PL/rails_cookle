@@ -1,9 +1,8 @@
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
   def index
-    @search = ['egg', 'pasta', 'potato', 'onion'] #
+    @search = ['pasta', 'eggplant', 'potato', 'shrimp 🦐'] #
     @recipes = select_recipes_including(@search)
-    
     # @recipes = Recipe.all
   end
 

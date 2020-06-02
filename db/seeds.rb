@@ -9,7 +9,7 @@ Dose.destroy_all
 Recipe.destroy_all
 Ingredient.destroy_all
 
-ingredients = %w(eggplant potato egg pasta onion)
+ingredients = ['eggplant', 'potato', 'egg', 'pasta', 'onion', 'shrimp 🦐' ]
 ingredients.sort!
 
 ingredients.each do |ingredient|

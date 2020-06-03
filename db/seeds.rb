@@ -10,21 +10,88 @@ require 'nokogiri'
 
 def destroy_all_data
   Dose.destroy_all
+  puts "doses destroyed"
   Recipe.destroy_all
+  puts "recipes destroyed"
   Ingredient.destroy_all
+  puts "ingredients destroyed"
 end
 
+def generate_ingredients
+  ingredients = [ 
+    'butter',
+    'sugar',
+    'egg',
+    'wheat flour',
+    'lemon',
+    'chocolate',
+    'onion',
+    'pepper',
+    'oil',
+    'onion',
+    'chilli',
+    'beef',
+    'tomato',
+    'tomato sauce',
+    'beans',
+    'rice',
+    'yoghourt',
+    'chicken',
+    'chorizo',
+    'cream',
+    'carrot',
+    'raisins',
+    'orange',
+    'juice',
+    'banana',
+    'lentils',
+    'milk',
+    'jam',
+    'potato',
+    'parsnip',
+    'bread',
+    'chickpeas',
+    'pork',
+    'pesto',
+    'sweet potato',
+    'wine',
+    'cheese',
+    'cheddar',
+    'naan',
+    'falafel',
+    'pitta',
+    'baguette',
+    'bacon',
+    'mozzarella',
+    'gruyère',
+    'mustard',
+    'raspberry',
+    'noodle',
+    'corn',
+    'mushroom',
+    'soy sauce',
+    'ginger',
+    'lasagne sheets',
+    'pasta',
+    'courgette',
+    'ricotta',
+    'celery',
+    'parmesan',
+    'spaghetti',
+    'coconut milk',
+    'peas',
+    'butternut'
+  ]
 
-def generate_fake_data
-  ingredients = ['eggplant', 'potato', 'egg', 'pasta', 'onion', 'shrimp 🦐' ]
-  ingredients.sort!
-  
   ingredients.each do |ingredient|
     ingredient = Ingredient.new(name: ingredient)
     ingredient.save!
   end
-  
-  20.times do
+end
+
+
+def generate_fake_recipes
+  5.times do
     name = Faker::Food.dish
     description = Faker::Food.description
     rating = rand(1..5)
@@ -53,33 +120,71 @@ def generate_fake_data
 end
 
 
-def scrape_BBC_good_food(keyword)
-  # find results for keyword
-  html_file = open("https://www.bbcgoodfood.com/search/recipes?query=#{keyword}").read
-  nokogiri_file_search_results = Nokogiri::HTML(html_file)
+def scrape_bbc_good_food
+  recipes = []
+  10.times do |index|
+    # get results from search page
+    html_file = open("https://www.bbcgoodfood.com/search/video/feed/rss2?page=#{index + 1}").read
+    nokogiri_file_search_results = Nokogiri::HTML(html_file)
+    # sleep rand(1..4)
 
-  # get array of urls for each recipe
-  recipe_urls = nokogiri_file_search_results.search('.teaser-item__title a').map do |recipe|
-    recipe.attribute('href').value
-  end
+    # get array of urls for each recipe
+    recipe_urls = nokogiri_file_search_results.search('.teaser-item__title a').map do |recipe|
+      recipe.attribute('href').value
+    end
 
-  # open each page
-  nokogiri_files_recipes = recipe_urls.map do |url|
-    html_file = open("https://www.bbcgoodfood.com/#{url}").read
-    Nokogiri::HTML(html_file)
-  end
+    # open each page
+    recipe_urls.each do |url|
+      file_url = "https://www.bbcgoodfood.com/#{url}"
+      html_file = open(file_url).read
+      nokogiri_file = Nokogiri::HTML(html_file)
 
-  recipes = nokogiri_files_recipes.map do |nokogiri_file|
-    recipe = {
-      name: nokogiri_file.search('h1').text.strip,
-      url_image: nokogiri_file.search('.img-container .ratio-11-10 img'),
-      description: nokogiri_file.search('.method__item p').map { |element| element.text.strip }.join("\n")
-  }
-    recipe
+      # generate recipe hash from scraped info
+      scraped_recipe = {
+        name: nokogiri_file.search('h1').text.strip,
+        url_image: nokogiri_file.search('.ratio-11-10 img')[0].attributes['src'].value,
+        description: nokogiri_file.search('.method__item p').map { |element| element.text.strip }.join(" "),
+        url: file_url,
+        ingredients_text: nokogiri_file.search('.ingredients-list__item').map { |element| element.text.strip }.join(" ")
+      }
+      puts "--recipe for #{url} created"
+      recipes << scraped_recipe
+
+      # add recipe to array of recipes
+    end
+    puts "page #{index + 1} searched, #{recipes.count} scraped in total"
   end
-  recipes
+  build_recipe_objects(recipes)
 end
 
-p scrape_BBC_good_food('aubergine')[0]
-p scrape_BBC_good_food('aubergine')[1]
+def build_recipe_objects(recipes_array)
 
+  # recipe objects with no ingredients/doses are created
+  recipes_array.each do |recipe|
+    # p recipe
+    new_recipe = Recipe.new(
+      name: recipe[:name], 
+      url_image: recipe[:url_image], 
+      description: recipe[:description], 
+      url: recipe[:url]
+    )
+    puts "recipe for #{new_recipe.name} added to the database"
+    new_recipe.save!
+
+  # create doses
+    Ingredient.all.each do |ingredient|
+      if recipe[:ingredients_text].match(ingredient.name)
+        new_dose = Dose.new(recipe: new_recipe, ingredient: ingredient)
+        new_dose.save!
+      end
+    end
+  end
+end
+
+
+
+destroy_all_data
+
+generate_ingredients
+
+scrape_bbc_good_food

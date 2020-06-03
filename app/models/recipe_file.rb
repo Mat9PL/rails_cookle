@@ -1,0 +1,2 @@
+class RecipeFile < ApplicationRecord
+end

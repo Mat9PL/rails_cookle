@@ -9,6 +9,8 @@ require 'open-uri'
 require 'nokogiri'
 
 def destroy_all_data
+  RecipeFile.destroy_all
+  puts "recipe_files destroyed"
   Dose.destroy_all
   puts "doses destroyed"
   Recipe.destroy_all
@@ -91,7 +93,7 @@ end
 
 
 def generate_fake_recipes
-  5.times do
+  2.times do
     name = Faker::Food.dish
     description = Faker::Food.description
     rating = rand(1..5)
@@ -119,10 +121,35 @@ def generate_fake_recipes
   end
 end
 
+def add_html_files_from_bbc_good_food
+  585.times do |index|
+    # get results from search page
+    search_url = "https://www.bbcgoodfood.com/search/video/feed/rss2?page=#{index + 297}"
+    # problem: https://www.bbcgoodfood.com/Search?searchstring=%D7%95%D7%95%D7%A1%D7%98%D7%A8%D7%A9%D7%99%D7%99%D7%A8&page=296
+    # https://www.bbcgoodfood.com/recipes/stuffed-mushrooms
+    html_search_file = open(search_url).read
+    
+    # parse results to obtain urls of each page
+    nokogiri_file_search_results = Nokogiri::HTML(html_search_file)
+    recipe_urls = nokogiri_file_search_results.search('.teaser-item__title a').map do |recipe|
+      recipe.attribute('href').value
+    end
+    
+    # open each file
+    recipe_urls.each do |url|
+      file_url = "https://www.bbcgoodfood.com/#{url}"
+      html_recipe_file = open(file_url).read
+    # create RecipeFile instance
+      recipe_file = RecipeFile.new(source: "bbcgoodfood.com", content: html_recipe_file, url: file_url)
+      recipe_file.save!
+      puts "#{file_url} has been added to the database"
+    end
+  end
+end
 
 def scrape_bbc_good_food
   recipes = []
-  10.times do |index|
+  20.times do |index|
     # get results from search page
     html_file = open("https://www.bbcgoodfood.com/search/video/feed/rss2?page=#{index + 1}").read
     nokogiri_file_search_results = Nokogiri::HTML(html_file)
@@ -181,10 +208,44 @@ def build_recipe_objects(recipes_array)
   end
 end
 
+def scrap_bbc_recipe_file(file)
+  nokogiri_file = Nokogiri::HTML(file.content)
+  # generate recipe hash from scraped info
+  scraped_recipe = Recipe.new(
+    name: nokogiri_file.search('h1').text.strip,
+    url_image: nokogiri_file.search('.ratio-11-10 img')[0].attributes['src'].value,
+    description: nokogiri_file.search('.method__item p').map { |element| element.text.strip }.join(" "),
+    url: file.url,
+  )
+  ingredients_text = nokogiri_file.search('.ingredients-list__item').map { |element| element.text.strip }.join(" ")
+  p ingredients_text
+  scraped_recipe.save!
+  puts "-recipe for #{scraped_recipe[:name]} created"
+  
+  Ingredient.all.each do |ingredient|
+    if ingredients_text.match(ingredient.name)
+      new_dose = Dose.new(recipe: scraped_recipe, ingredient: ingredient)
+      new_dose.save!
+      puts "---#{scraped_recipe[:name]} includes #{ingredient.name}"
+    end
+  end
+  # add recipe to array of recipes
+end
 
-
-destroy_all_data
+Dose.destroy_all
+Recipe.destroy_all
+Ingredient.destroy_all
 
 generate_ingredients
 
-scrape_bbc_good_food
+RecipeFile.all.each { |file| scrap_bbc_recipe_file(file) }
+
+
+# scrape_bbc_good_food
+
+
+
+# destroy_all_data
+
+# add_html_files_from_bbc_good_food
+

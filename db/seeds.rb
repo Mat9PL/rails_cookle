@@ -10,67 +10,77 @@ require 'nokogiri'
 
 def destroy_all_data
   Dose.destroy_all
+  puts "doses destroyed"
   Recipe.destroy_all
+  puts "recipes destroyed"
   Ingredient.destroy_all
+  puts "ingredients destroyed"
 end
 
 def generate_ingredients
   ingredients = [ 
-    'pepper',
-    'oil',
-    'onion',
-    'chilli',
-    'beef',
-    'tomato',
-    'tomato sauce',
-    'beans',
-    'rice',
-    'yoghourt',
-    'chicken',
-    'chorizo',
-    'cream',
-    'carrot',
-    'raisins',
-    'orange',
-    'juice',
-    'banana',
-    'lentils',
-    'milk',
-    'jam',
-    'potato',
-    'parsnip',
-    'bread',
-    'chickpeas',
-    'pork',
-    'pesto',
-    'sweet potato',
-    'wine',
-    'cheese',
-    'cheddar',
-    'naan',
-    'falafel',
-    'pitta',
-    'baguette',
-    'bacon',
-    'mozzarella',
-    'gruyère',
-    'mustard',
-    'raspberry',
-    'noodle',
-    'corn',
-    'mushroom',
-    'soy sauce',
-    'ginger',
-    'lasagne sheets',
-    'pasta',
-    'courgette',
-    'ricotta',
-    'celery',
-    'parmesan',
-    'spaghetti',
-    'coconut milk',
-    'peas',
-    'butternut'
+    /butter/,
+    /sugar/,
+    /egg/,
+    /wheat flour/,
+    /lemon/,
+    /chocolate/,
+    /onion/,
+    /pepper/,
+    /oil/,
+    /onion/,
+    /chilli/,
+    /beef/,
+    /tomato/,
+    /tomato sauce/,
+    /beans/,
+    /rice/,
+    /yoghourt/,
+    /chicken/,
+    /chorizo/,
+    /cream/,
+    /carrot/,
+    /raisins/,
+    /orange/,
+    /juice/,
+    /banana/,
+    /lentils/,
+    /milk/,
+    /jam/,
+    /potato/,
+    /parsnip/,
+    /bread/,
+    /chickpeas/,
+    /pork/,
+    /pesto/,
+    /sweet potato/,
+    /wine/,
+    /cheese/,
+    /cheddar/,
+    /naan/,
+    /falafel/,
+    /pitta/,
+    /baguette/,
+    /bacon/,
+    /mozzarella/,
+    /gruyère/,
+    /mustard/,
+    /raspberry/,
+    /noodle/,
+    /corn/,
+    /mushroom/,
+    /soy sauce/,
+    /ginger/,
+    /lasagne sheets/,
+    /pasta/,
+    /courgette/,
+    /ricotta/,
+    /celery/,
+    /parmesan/,
+    /spaghetti/,
+    /coconut milk/,
+    /peas/,
+    /butternut/
   ]
 
   ingredients.each do |ingredient|
@@ -81,7 +91,7 @@ end
 
 
 def generate_fake_recipes
-  20.times do
+  10.times do
     name = Faker::Food.dish
     description = Faker::Food.description
     rating = rand(1..5)
@@ -112,7 +122,7 @@ end
 
 def scrape_bbc_good_food
   recipes = []
-  20.times do |index|
+  10.times do |index|
     # get results from search page
     html_file = open("https://www.bbcgoodfood.com/search/video/feed/rss2?page=#{index + 1}").read
     nokogiri_file_search_results = Nokogiri::HTML(html_file)
@@ -163,7 +173,7 @@ def build_recipe_objects(recipes_array)
 
   # create doses
     Ingredient.all.each do |ingredient|
-      if recipe[:ingredients_text].include?(ingredient.name)
+      if recipe[:ingredients_text].match(ingredient.name)
         new_dose = Dose.new(recipe: new_recipe, ingredient: ingredient)
         new_dose.save!
       end

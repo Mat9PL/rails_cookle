@@ -93,12 +93,11 @@ end
 
 
 def generate_fake_recipes
-  2.times do
+  50.times do
     name = Faker::Food.dish
     description = Faker::Food.description
     rating = rand(1..5)
   
-    
     recipe = Recipe.new(
       name: name,
       description: description,
@@ -237,8 +236,9 @@ Recipe.destroy_all
 Ingredient.destroy_all
 
 generate_ingredients
+generate_fake_recipes
 
-RecipeFile.all.each { |file| scrap_bbc_recipe_file(file) }
+# RecipeFile.all.each { |file| scrap_bbc_recipe_file(file) }
 
 
 # scrape_bbc_good_food

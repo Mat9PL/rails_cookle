@@ -2028,7 +2028,7 @@ CATEGORIES = {
     'pretzel',
     'cornbread',
     'croutons',
-    'baguette'   
+    'baguette'
   ]
 }
 

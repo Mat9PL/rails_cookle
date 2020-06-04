@@ -5,10 +5,11 @@ class Recipe < ApplicationRecord
   def scrape_ingredients! # analyses the ingredients_text of a recipe to match ingredients
     self.doses.destroy_all
     Ingredient.all.each do |ingredient|
-      if self.ingredients_text.match(ingredient.name)
+      regex = Regexp.new(ingredient.regex)
+      if self.ingredients_text.match(regex)
         new_dose = Dose.new(recipe: self, ingredient: ingredient)
         new_dose.save!
-        puts "---#{recipe.name} contains #{ingredient.name}"
+        puts "---#{self.name} contains #{ingredient.name}"
       end
     end
   end

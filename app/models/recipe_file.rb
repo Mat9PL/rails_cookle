@@ -16,21 +16,21 @@ class RecipeFile < ApplicationRecord
       # parse results to obtain urls of each page
       nokogiri_file_search_results = Nokogiri::HTML(html_search_file)
       nokogiri_file_search_results.search('.teaser-item__title a').each do |recipe|
-        urls <<  recipe.attribute('href').value
+        url = "https://www.bbcgoodfood.com/#{recipe.attribute('href').value}"
+        unless url == "https://www.bbcgoodfood.com/recipes/stuffed-mushrooms" # this page doesn't work and stops the method
+          urls << url 
+        end
       end
     end
     urls
   end
 
   def self.import_from_bbc_good_food(url) # builds a RecipeFile instance from a BBC Good Food url
-    unless url == "/recipes/stuffed-mushrooms" # this page doesn't work and stops the method
-      file_url = "https://www.bbcgoodfood.com/#{url}"
-      html_recipe_file = open(file_url).read
-      # create RecipeFile instance
-      recipe_file = RecipeFile.new(source: "bbcgoodfood.com", content: html_recipe_file, url: file_url)
-      recipe_file.save!
-      puts "#{url} has been added to the database"
-    end
+    html_recipe_file = open(url).read
+    # create RecipeFile instance
+    recipe_file = RecipeFile.new(source: "bbcgoodfood.com", content: html_recipe_file, url: file_url)
+    recipe_file.save!
+    puts "#{url} has been added to the database"
   end
   
   def convert_bbc_recipe_file # builds a Recipe instance from a RecipeFile instance from BBC Good Food
@@ -40,8 +40,8 @@ class RecipeFile < ApplicationRecord
     new_recipe = Recipe.new(
       name: nokogiri_file.search('h1').text.strip,
       url_image: nokogiri_file.search('.ratio-11-10 img')[0].attributes['src'].value,
-      ingredients_text: nokogiri_file.search('.ingredients-list__item').map { |element| element.text.strip }.join(" ")
-      description: nokogiri_file.search('.method__item p').map { |element| element.text.strip }.join(" "),
+      ingredients_text: nokogiri_file.search('.ingredients-list__item').map { |element| element.text.strip }.join(" ").downcase,
+      description: (nokogiri_file.search('.method__item p').map { |element| element.text.strip }).join(" "),
       url: self.url,
     )
 

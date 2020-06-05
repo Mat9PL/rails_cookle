@@ -8,10 +8,6 @@ class RecipesController < ApplicationController
     @search.each do |ingredient_group_id|
       ingredient_group = IngredientGroup.find(ingredient_group_id.to_i)
       @searched_ingredients += ingredient_group.ingredients
-      puts '===='
-      p ingredient_group
-      puts '===='
-
     end
     @all_recipes = policy_scope(Recipe)
     @recipes = select_recipes_including(@searched_ingredients)
@@ -27,7 +23,6 @@ class RecipesController < ApplicationController
 
   def select_recipes_including(searched_ingredients)
     searched_ingredients = searched_ingredients.uniq
-    # searched_ingredients = search_results.map { |ingredient| Ingredient.where(name: ingredient.regex)}
     @all_recipes.select { |recipe| (recipe.ingredients - searched_ingredients.flatten).empty? }
   end
 end

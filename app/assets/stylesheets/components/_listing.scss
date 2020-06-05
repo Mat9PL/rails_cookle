@@ -41,8 +41,11 @@
   bottom: 0;
   background-color: rgba(128, 128, 128, 0.171);
   text-align: center;
+  color: black;
   &:hover {
     background-color: rgba(128, 128, 128, 0.644);
+    text-decoration: none;
+    color: white;
   }
 }
 

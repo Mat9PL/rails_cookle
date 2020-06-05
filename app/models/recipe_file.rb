@@ -7,7 +7,7 @@ class RecipeFile < ApplicationRecord
 
   def self.scrape_links_from_bbc_good_food # returns array of urls to recipe files on BBC Good Food
     urls = []
-    882.times do |index|
+    35.times do |index| # 882 pages in total
       # get results from search page
       search_url = "https://www.bbcgoodfood.com/search/video/feed/rss2?page=#{index}"
       # problem: on page 296 with stuffed mushrooms

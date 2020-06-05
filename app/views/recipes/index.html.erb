@@ -1,13 +1,14 @@
 <div class="container">
-
-  <h1>Recipes:</h1>
+  <h1>Recipes</h1>
   <div class="listing">
     <% @recipes.each do |recipe| %>
       <div type="button" class="listing-item">
         <%= image_tag recipe.url_image %>
         <div class="listing-item-infos">
-          <h2><%= recipe.name %></h2>
-          <p><%= recipe.description[0..80] %>...</p>
+          <div>
+            <h2><%= recipe.name %></h2>
+            <p><%= recipe.description[0..200].strip %>...</p>
+          </div>
           <div class="listing-item-tags">
             <% recipe.ingredients.each do |ingredient| %>
               <div class="listing-item-tag">
@@ -17,7 +18,7 @@
             </div>
         </div>
         <!-- Button trigger modal -->
-        
+
         <%= link_to 'See more', recipe.url, class: "listing-item-expand" %>
 
         <!-- Modal -->

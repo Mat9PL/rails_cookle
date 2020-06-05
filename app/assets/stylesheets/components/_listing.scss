@@ -1,13 +1,13 @@
 .listing-item {
   overflow: hidden;
-  height: 160px;
+  height: 200px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: flex-start;
   position: relative;
   margin: 5px;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .listing-item img {
@@ -17,21 +17,25 @@
 }
 
 .listing-item h2 {
-  font-size: 14px;
+  font-size: 25px;
   font-weight: bold;
   margin: 0;
 }
 
 .listing-item p {
-  font-size: 10px;
+  font-size: 15px;
   margin-bottom: 0;
   margin-top: 4px;
   color: grey;
   text-shadow: 0px 0px 0px rgba(0,0,0,0.8);
+  text-align: left;
 }
 
 .listing-item .listing-item-infos {
   padding: 12px;
+  display: flex;
+  align-items: space-between;
+  flex-direction: column;
 }
 
 .listing-item-expand {

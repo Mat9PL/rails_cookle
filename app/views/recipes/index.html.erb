@@ -3,10 +3,9 @@
   <h1>Recipes:</h1>
   <div class="listing">
     <% @recipes.each do |recipe| %>
-      <div type="button" class="listing-item" data-toggle="modal" data-target="#exampleModalCenter">
+      <div type="button" class="listing-item">
         <%= image_tag recipe.url_image %>
         <div class="listing-item-infos">
-        <%= link_to 'link', recipe.url %>
           <h2><%= recipe.name %></h2>
           <p><%= recipe.description[0..80] %>...</p>
           <div class="listing-item-tags">
@@ -18,9 +17,8 @@
             </div>
         </div>
         <!-- Button trigger modal -->
-        <div class="listing-item-expand">
-          See more
-        </div>
+        
+        <%= link_to 'See more', recipe.url, class: "listing-item-expand" %>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

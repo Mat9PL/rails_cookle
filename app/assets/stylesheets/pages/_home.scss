@@ -3,17 +3,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   min-height: calc(100vh - 50px);
-  color: rgb(221, 126, 49);
-  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.8);
+  color: $light-green;
+
 }
 
 h1 {
   text-align: center;
-  font-size: 100px;
+  font-size: 140px;
+  font-family: $title-font4;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 
 p {
   text-align: center;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  font-family: $title-font4;
+  font-size: 30px;
+  color: white;
+}
+
+.home-logo {
+  width: 300px;
+  height: 250px;
 }

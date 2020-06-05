@@ -20,7 +20,7 @@ def destroy_all_data
 end
 
 def generate_ingredients
-  ingredients = [ 
+  ingredients = [
     'butter',
     'sugar',
     'egg',
@@ -35,54 +35,54 @@ def generate_ingredients
     'beef',
     'tomato',
     'tomato sauce',
-    'beans',
-    'rice',
-    'yoghourt',
-    'chicken',
-    'chorizo',
-    'cream',
-    'carrot',
-    'raisins',
-    'orange',
-    'juice',
-    'banana',
-    'lentils',
-    'milk',
-    'jam',
-    'potato',
-    'parsnip',
-    'bread',
-    'chickpeas',
-    'pork',
-    'pesto',
-    'sweet potato',
-    'wine',
-    'cheese',
-    'cheddar',
-    'naan',
-    'falafel',
-    'pitta',
-    'baguette',
-    'bacon',
-    'mozzarella',
-    'gruyère',
-    'mustard',
-    'raspberry',
-    'noodle',
-    'corn',
-    'mushroom',
-    'soy sauce',
-    'ginger',
-    'lasagne sheets',
-    'pasta',
-    'courgette',
-    'ricotta',
-    'celery',
-    'parmesan',
-    'spaghetti',
-    'coconut milk',
-    'peas',
-    'butternut'
+    # 'beans',
+    # 'rice',
+    # 'yoghourt',
+    # 'chicken',
+    # 'chorizo',
+    # 'cream',
+    # 'carrot',
+    # 'raisins',
+    # 'orange',
+    # 'juice',
+    # 'banana',
+    # 'lentils',
+    # 'milk',
+    # 'jam',
+    # 'potato',
+    # 'parsnip',
+    # 'bread',
+    # 'chickpeas',
+    # 'pork',
+    # 'pesto',
+    # 'sweet potato',
+    # 'wine',
+    # 'cheese',
+    # 'cheddar',
+    # 'naan',
+    # 'falafel',
+    # 'pitta',
+    # 'baguette',
+    # 'bacon',
+    # 'mozzarella',
+    # 'gruyère',
+    # 'mustard',
+    # 'raspberry',
+    # 'noodle',
+    # 'corn',
+    # 'mushroom',
+    # 'soy sauce',
+    # 'ginger',
+    # 'lasagne sheets',
+    # 'pasta',
+    # 'courgette',
+    # 'ricotta',
+    # 'celery',
+    # 'parmesan',
+    # 'spaghetti',
+    # 'coconut milk',
+    # 'peas',
+    # 'butternut'
   ]
 
   ingredients.each do |ingredient|
@@ -93,11 +93,11 @@ end
 
 
 def generate_fake_recipes
-  50.times do
+  200.times do
     name = Faker::Food.dish
     description = Faker::Food.description
     rating = rand(1..5)
-  
+
     recipe = Recipe.new(
       name: name,
       description: description,
@@ -106,7 +106,7 @@ def generate_fake_recipes
       url: "https://www.bbc.co.uk/food/recipes/baba_ganoush_grilled_50988"
       )
       recipe.save!
-      
+
       all_ingredients = Ingredient.all
       rand(2..5).times do
         added_ingredient = all_ingredients.sample
@@ -127,13 +127,13 @@ def add_html_files_from_bbc_good_food
     # problem: https://www.bbcgoodfood.com/Search?searchstring=%D7%95%D7%95%D7%A1%D7%98%D7%A8%D7%A9%D7%99%D7%99%D7%A8&page=296
     # https://www.bbcgoodfood.com/recipes/stuffed-mushrooms
     html_search_file = open(search_url).read
-    
+
     # parse results to obtain urls of each page
     nokogiri_file_search_results = Nokogiri::HTML(html_search_file)
     recipe_urls = nokogiri_file_search_results.search('.teaser-item__title a').map do |recipe|
       recipe.attribute('href').value
     end
-    
+
     # open each file
     recipe_urls.each do |url|
       file_url = "https://www.bbcgoodfood.com/#{url}"
@@ -189,9 +189,9 @@ def build_recipe_objects(recipes_array)
   recipes_array.each do |recipe|
     # p recipe
     new_recipe = Recipe.new(
-      name: recipe[:name], 
-      url_image: recipe[:url_image], 
-      description: recipe[:description], 
+      name: recipe[:name],
+      url_image: recipe[:url_image],
+      description: recipe[:description],
       url: recipe[:url]
     )
     puts "recipe for #{new_recipe.name} added to the database"
@@ -220,7 +220,7 @@ def scrap_bbc_recipe_file(file)
   p ingredients_text
   scraped_recipe.save!
   puts "-recipe for #{scraped_recipe[:name]} created"
-  
+
   Ingredient.all.each do |ingredient|
     if ingredients_text.match(ingredient.name)
       new_dose = Dose.new(recipe: scraped_recipe, ingredient: ingredient)

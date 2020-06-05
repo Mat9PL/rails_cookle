@@ -12,13 +12,13 @@ class RecipeFile < ApplicationRecord
       search_url = "https://www.bbcgoodfood.com/search/video/feed/rss2?page=#{index}"
       # problem: on page 296 with stuffed mushrooms
       html_search_file = open(search_url).read
-      
+
       # parse results to obtain urls of each page
       nokogiri_file_search_results = Nokogiri::HTML(html_search_file)
       nokogiri_file_search_results.search('.teaser-item__title a').each do |recipe|
         url = "https://www.bbcgoodfood.com/#{recipe.attribute('href').value}"
         unless url == "https://www.bbcgoodfood.com/recipes/stuffed-mushrooms" # this page doesn't work and stops the method
-          urls << url 
+          urls << url
         end
       end
     end
@@ -28,11 +28,11 @@ class RecipeFile < ApplicationRecord
   def self.import_from_bbc_good_food(url) # builds a RecipeFile instance from a BBC Good Food url
     html_recipe_file = open(url).read
     # create RecipeFile instance
-    recipe_file = RecipeFile.new(source: "bbcgoodfood.com", content: html_recipe_file, url: file_url)
+    recipe_file = RecipeFile.new(source: "bbcgoodfood.com", content: html_recipe_file, url: url)
     recipe_file.save!
     puts "#{url} has been added to the database"
   end
-  
+
   def convert_bbc_recipe_file # builds a Recipe instance from a RecipeFile instance from BBC Good Food
     nokogiri_file = Nokogiri::HTML(self.content)
 

@@ -1233,7 +1233,7 @@ def generate_fake_recipes
     name = Faker::Food.dish
     description = Faker::Food.description
     rating = rand(1..5)
-  
+
     recipe = Recipe.new(
       name: name,
       description: description,
@@ -1242,7 +1242,7 @@ def generate_fake_recipes
       url: "https://www.bbc.co.uk/food/recipes/baba_ganoush_grilled_50988"
       )
       recipe.save!
-      
+
       all_ingredients = Ingredient.all
       rand(2..5).times do
         added_ingredient = all_ingredients.sample
@@ -1275,7 +1275,9 @@ Ingredient.destroy_all
 puts "ingredients destroyed"
 
 urls = RecipeFile.scrape_links_from_bbc_good_food
-RecipeFile.import_from_bbc_good_food(url)
+urls.each do |url|
+  RecipeFile.import_from_bbc_good_food(url)
+end
 RecipeFile.all.each { |recipe_file| recipe_file.convert_bbc_recipe_file }
 
 puts ''
@@ -1327,6 +1329,6 @@ puts ''
 
 
 Recipe.all.each do |recipe|
-  recipe.scrape_ingredients! 
+  recipe.scrape_ingredients!
   puts "#{recipe} contains #{recipe.ingredients.join(" ")}"
 end

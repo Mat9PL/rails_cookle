@@ -1,10 +1,16 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Indie+Flower&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Indie+Flower&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Flamenco&family=Sacramento&display=swap" rel="stylesheet');
 // Define fonts for body and headers
+$title-font4: 'Flamenco', "cursive";
+$title-font3: 'Sacramento', "cursive";
+$title-font2: 'Caveat', "cursive";
 $body-font: "Work Sans", "Helvetica", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
-
+$title-font: "Indie Flower", "cursive";
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";

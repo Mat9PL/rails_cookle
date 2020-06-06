@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_113345) do
+ActiveRecord::Schema.define(version: 2020_06_06_183304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,25 +46,24 @@ ActiveRecord::Schema.define(version: 2020_06_04_113345) do
     t.string "regex"
   end
 
-  create_table "recipe_files", force: :cascade do |t|
-    t.string "source"
-    t.string "url"
-    t.string "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "url"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "url_image"
-    t.bigint "recipe_file_id"
     t.string "ingredients_text"
-    t.index ["recipe_file_id"], name: "index_recipes_on_recipe_file_id"
+    t.string "source"
+    t.bigint "url_id"
+    t.index ["url_id"], name: "index_recipes_on_url_id"
+  end
+
+  create_table "urls", force: :cascade do |t|
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "imported"
   end
 
   create_table "users", force: :cascade do |t|

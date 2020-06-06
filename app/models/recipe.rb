@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
   has_many :doses
   has_many :ingredients, through: :doses
+  belongs_to :url, optional: true
 
   def scrape_ingredients! # analyses the ingredients_text of a recipe to match ingredients
     self.doses.destroy_all

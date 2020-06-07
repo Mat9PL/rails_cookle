@@ -1333,4 +1333,9 @@ end
 #   puts "#{recipe} contains #{recipe.ingredients.join(" ")}"
 # end
 
-Url.first.import!
+Dose.destroy_all
+Recipe.destroy_all
+Url.all[0..50].each { |url| url.import! }
+
+
+Recipe.all.each { |recipe| recipe.scrape_ingredients! }

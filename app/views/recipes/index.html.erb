@@ -19,7 +19,7 @@
         </div>
         <!-- Button trigger modal -->
 
-        <%= link_to 'See more', recipe.url, class: "listing-item-expand" %>
+        <%= link_to 'See more', recipe.url.url, class: "listing-item-expand" %>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -47,7 +47,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <%= link_to 'See recipe!', recipe.url, class: "btn btn-success" %>
+                <%= link_to 'See recipe!', recipe.url.url, class: "btn btn-success" %>
               </div>
             </div>
           </div>

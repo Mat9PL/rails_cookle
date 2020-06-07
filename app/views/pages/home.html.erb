@@ -2,17 +2,15 @@
   <div class="home">
     <!--%= image_tag "logo-coocle.png", class: "home-logo" %-->
     <div><h1>Coocle</h1></div>
-    <div>
-      <p>Select the ingredients you have and we will find you a recipe!</p>
-      <%= simple_form_for :search, url: recipes_path, method: :get, collection: @ingredients do |f| %>
-        <div class="search-form-control form-group">
-          <%= f.input :multiple_search, collection: @ingredient_groups, input_html: { multiple: true, class: " ingredients select2-form" }, label: false %>
-          <br>
-            <button name="button" type="submit" class=" button-search btn btn-flat">
-              <i class="fas fa-search"></i> Search
-            </button>
-        </div>
-      <% end %>
-    </div>
+    <p>Tell us what ingredients you have in your fridge, and we will find you amazing recipes you can cook right now!</p>
+    <%= simple_form_for :search, url: recipes_path, method: :get, collection: @ingredients do |f| %>
+      <div class="search-form-control">
+        <%= f.input :multiple_search, collection: @ingredient_groups, input_html: { multiple: true, class: "select2-form search-form-control" }, label: false %>
+        <br>
+        <button name="button" type="submit" class="button-search btn btn-flat">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
   </div>
 </div>

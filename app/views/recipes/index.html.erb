@@ -1,8 +1,15 @@
 <div class="container">
-  <h1>Recipes</h1>
+  <%= render 'shared/search_bar' %>
+  <% if @recipes.count == 0 %>
+    <h1>No recipes found for these ingredients. Please put some more ingredients, and we will find you something amazing to cook.</h1>
+  <% elsif @recipes.count == 0 %>
+    <h2>1 recipe found:</h2>
+  <% else %>
+    <h1><%= @recipes.count %> recipes found:</h1>
+  <% end %>
   <div class="listing">
     <% @recipes.each do |recipe| %>
-      <div type="button" class="listing-item">
+      <div class="listing-item">
         <%= image_tag recipe.url_image %>
         <div class="listing-item-infos">
           <div>
@@ -17,41 +24,8 @@
             <% end %>
             </div>
         </div>
-        <!-- Button trigger modal -->
-
-        <%= link_to 'See more', recipe.url, class: "listing-item-expand" %>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">
-                  <%= recipe.name %>
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="listing-item-infos">
-                  <p><%= recipe.description[0..300] %></p>
-                  <div class="listing-item-tags">
-                    <% recipe.ingredients.each do |ingredient| %>
-                      <div class="listing-item-tag">
-                        <%= ingredient.name %>
-                      </div>
-                    <% end %>
-                    </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <%= link_to 'See recipe!', recipe.url, class: "btn btn-success" %>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- Button linking external recipe -->
+        <%= link_to 'See more', recipe.url.url, target: :_blank, class: "listing-item-expand" %>
       </div>
     <% end %>
   </div>

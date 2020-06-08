@@ -5,27 +5,58 @@
   justify-content: center;
   flex-direction: column;
   min-height: calc(100vh - 50px);
-  color: $light-green;
-
 }
 
 h1 {
   text-align: center;
   font-size: 140px;
   font-family: $title-font4;
+  font-weight: bold;
   color: white;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
 }
 
 p {
   text-align: center;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
   font-family: $title-font4;
-  font-size: 30px;
+  font-size: 36px;
+  font-weight: bold;
   color: white;
 }
 
 .home-logo {
   width: 300px;
   height: 250px;
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  h1 {
+    font-size: 72px;
+  }
+  
+  p {
+    font-size: 20px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  h1 {
+    font-size: 80px;
+  }
+  
+  p {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 140px;
+  }
+  
+  p {
+    font-size: 36px;
+  }
 }

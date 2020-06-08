@@ -1,0 +1,9 @@
+<%= simple_form_for :search, url: recipes_path, method: :get, collection: @ingredients do |f| %>
+  <div class="search-form-control">
+    <%= f.input :multiple_search, collection: @ingredient_groups, input_html: { multiple: true, class: "select2-form search-form-control" }, label: false %>
+    <br>
+    <button name="button" type="submit" class="button-search btn btn-flat">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </div>
+<% end %>

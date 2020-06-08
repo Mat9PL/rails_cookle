@@ -30,3 +30,34 @@ p {
   width: 300px;
   height: 250px;
 }
+
+@media (min-width: 100px) and (max-width: 575px) {
+  h1 {
+    font-size: 72px;
+  }
+  
+  p {
+    font-size: 20px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  h1 {
+    font-size: 80px;
+  }
+  
+  p {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 140px;
+  }
+  
+  p {
+    font-size: 36px;
+  }
+}

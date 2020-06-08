@@ -1,6 +1,5 @@
 .search-form-control {
   position: relative;
-  width: 800px;
 }
 
 
@@ -23,7 +22,7 @@
 .select2-selection--multiple {
   border: 1px solid #F4F4F4 !important;
   border-radius: 25px !important;
-  padding: 3px;
+  padding: 3px !important;
   padding-right: 100px !important;
   min-height: 52px;
   font-size: 24px;
@@ -49,4 +48,54 @@
   font-weight: bold;
   color: white  !important;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .search-form-control {
+    width: 300px;
+  }
+  .select2-selection--multiple {
+    width: 300px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .search-form-control {
+    width: 500px;
+  }
+  .select2-selection--multiple {
+    width: 500px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .search-form-control {
+    width: 600px;
+  }
+  .select2-selection--multiple {
+    width: 600px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .search-form-control {
+    width: 700px;
+  }
+  .select2-selection--multiple {
+    width: 700px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .search-form-control {
+    width: 900px;
+  }
+  .select2-selection--multiple {
+    width: 900px;
+  }
 }

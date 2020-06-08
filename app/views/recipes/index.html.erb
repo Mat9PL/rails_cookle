@@ -1,4 +1,5 @@
 <div class="container">
+  <%= render 'shared/search_bar' %>
   <h1><%= @recipes.count %> recipes found:</h1>
   <div class="listing">
     <% @recipes.each do |recipe| %>

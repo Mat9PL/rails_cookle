@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Recipes</h1>
+  <h1><%= @recipes.count %> recipes found:</h1>
   <div class="listing">
     <% @recipes.each do |recipe| %>
       <div type="button" class="listing-item">

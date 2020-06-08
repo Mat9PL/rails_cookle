@@ -22,12 +22,14 @@
 
 .select2-selection--multiple {
   border: 1px solid #F4F4F4 !important;
-  border-radius: 50px !important;
+  border-radius: 25px !important;
   padding: 3px;
   padding-right: 100px !important;
-  height: 52px;
+  min-height: 52px;
   font-size: 24px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.6);  
+  box-shadow: 0 0 6px rgba(0,0,0,0.6);
+  background-color: white !important;
+  overflow-y: auto;
 }
 
 .select2-selection__choice {

@@ -1,5 +1,5 @@
 class IngredientGroup < ApplicationRecord
-  has_many :ingredient_groupers
+  has_many :ingredient_groupers, dependent: :destroy
   has_many :ingredients, through: :ingredient_groupers
 
   def self.generate_ingredient_groups(groups)
@@ -15,11 +15,10 @@ class IngredientGroup < ApplicationRecord
     puts self.name
     group.each do |categorized_ingredient|
       Ingredient.all.each do |ingredient|
-        if categorized_ingredient.match(ingredient.regex)
+        if categorized_ingredient == ingredient.name
           new_grouper = IngredientGrouper.new(ingredient_group: self, ingredient: ingredient)
-          puts "---contains #{ingredient.name}, #{new_grouper.valid?}"
           new_grouper.save
-          puts self.ingredients.count
+          puts "-#{self.ingredients.count}--contains #{ingredient.name}, #{new_grouper.valid?}"
         end
       end
     end

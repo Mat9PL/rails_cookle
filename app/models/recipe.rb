@@ -1,5 +1,5 @@
 class Recipe < ApplicationRecord
-  has_many :doses
+  has_many :doses, dependent: :destroy
   has_many :ingredients, through: :doses
   belongs_to :url, optional: true
 

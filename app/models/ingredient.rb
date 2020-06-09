@@ -20,4 +20,10 @@ class Ingredient < ApplicationRecord
       puts "#{new_ingredient.name} created!"
     end
   end
+
+  def groupify
+    ing_group = IngredientGroup.new(name: self.name)
+    ing_group.save!
+    IngredientGrouper.new(ingredient_group: ing_group, ingredient: self).save!
+  end
 end

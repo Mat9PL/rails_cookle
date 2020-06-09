@@ -15,8 +15,8 @@ class Url < ApplicationRecord
       nokogiri_file_search_results = Nokogiri::HTML(html_search_file)
       nokogiri_file_search_results.search('.teaser-item__title a').each do |recipe|
         url = "https://www.bbcgoodfood.com/#{recipe.attribute('href').value}"
-        p url
-          Url.new(url: url, imported: false).save!
+        Url.new(url: url).save!
+
       end
     end
   end

@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-CURATED_INGREDIENTS = [
-  { name: 'cheese' },
+INGREDIENTS = [
+  { name: 'cheese', regex: /ufoecrunnu/ },
+  { name: 'sugar' },
   { name: 'chocolate' },
   { name: 'honey' },
   { name: 'parmesan' },
@@ -571,7 +572,7 @@ CURATED_INGREDIENTS = [
   { name: 'alligator' }
 ]
 
-CATEGORIES = {
+INGREDIENT_GROUPS = {
   'cheese' => [
     'parmesan',
     'cheddar',
@@ -1216,19 +1217,7 @@ CATEGORIES = {
   ]
 }
 
-def destroy_all_data
-  Dose.destroy_all
-  puts "doses destroyed"
-  Recipe.destroy_all
-  puts "recipes destroyed"
-  Ingredient.destroy_all
-  puts "ingredients destroyed"
-end
-
-
-
-
-def generate_fake_recipes
+def generate_fake_recipes # needs revision, doesn't work currently
   50.times do
     name = Faker::Food.dish
     description = Faker::Food.description
@@ -1255,87 +1244,25 @@ def generate_fake_recipes
     end
   end
 end
-# generate_ingredients
 
-# destroy_all_data
-
-# generate_fake_recipes
-
-# RecipeFile.all.take(500).each { |recipe_file| recipe_file.convert_bbc_recipe_file }
-
-# Dose.destroy_all
-# puts "doses destroyed"
+### destroy previous data
 # Recipe.destroy_all
-# puts "recipes destroyed"
-# IngredientGrouper.destroy_all
-# puts "ingredient_groupers destroyed"
+# Dose.destroy_all
 # IngredientGroup.destroy_all
-# puts "ingredient_groups destroyed"
 # Ingredient.destroy_all
-# puts "ingredients destroyed"
 
-# urls = RecipeFile.scrape_links_from_bbc_good_food
-# urls.each do |url|
-#   RecipeFile.import_from_bbc_good_food(url)
-# end
-# RecipeFile.all.each { |recipe_file| recipe_file.convert_bbc_recipe_file }
+### read yaml files to import ingredients and ingredient groups
+# require 'yaml'
+# ingredients = YAML.load(File.read("db/yaml/ingredients.yml"))
+# ingredient_groups = YAML.load(File.read("db/yaml/ingredient_groups.yml"))
 
-# puts ''
-# puts ''
-# puts ''
-# puts ''
-# puts 'GENERATING INGREDIENTS'
-# puts ''
-# puts ''
-# puts ''
-# puts ''
-# Ingredient.generate_ingredients(CURATED_INGREDIENTS)
-# puts ''
-# puts ''
-# puts ''
-# puts ''
-# puts 'GENERATING GROUPS'
-# puts ''
-# puts ''
-# puts ''
-# puts ''
-# IngredientGroup.generate_ingredient_groups(CATEGORIES)
-# IngredientGroup.all.each {|el| el.group_ingredients!(CATEGORIES[el.name]) }
-# puts ''
-# puts ''
-# puts ''
-# puts ''
-# puts 'GENERATING SINGLE INGREDIENT GROUPS'
-# puts ''
-# puts ''
-# puts ''
-# puts ''
-# Ingredient.all.each do |ingredient|
-#   ingredient_group = IngredientGroup.new(name: ingredient.name)
-#   ingredient_group.save!
-#   puts "#{ingredient_group.name} created!"
-#   ingredient_grouper = IngredientGrouper.new(ingredient: ingredient, ingredient_group: ingredient_group)
-#   ingredient_grouper.save!
-# end
-# puts ''
-# puts ''
-# puts ''
-# puts ''
-# puts 'GROUPING INGREDIENT IN GROUPS'
-# puts ''
-# puts ''
-# puts ''
-# puts ''
-
-
-# Recipe.all.each do |recipe|
-#   recipe.scrape_ingredients!
-#   puts "#{recipe} contains #{recipe.ingredients.join(" ")}"
-# end
-# Url.destroy_all
-# Url.scrape_links_from_bbc_good_food
-
-Dose.destroy_all
-Recipe.destroy_all
-Url.all[0..800].each { |url| url.import! }
+### generate and group ingredients
+# Ingredient.generate_ingredients(ingredients)
+# IngredientGroup.generate_ingredient_groups(ingredient_groups)
+# IngredientGroup.all.each { |ing_group| ing_group.group_ingredients!(ingredient_groups[ing_group.name]) }
+# Ingredient.all.each { |ing| ing.groupify }
+### import recipes from URLs
+# Url.all[0..5000].each { |url| url.import! }
 Recipe.all.each { |recipe| recipe.scrape_ingredients! }
+
+

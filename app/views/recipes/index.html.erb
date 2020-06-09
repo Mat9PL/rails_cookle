@@ -4,7 +4,7 @@
   <% elsif @recipes.count == 0 %>
     <h2>1 recipe found:</h2>
   <% else %>
-    <h1><%= @recipes.count %> recipes found:</h1>
+    <h1><%= @found_recipes.count %> recipes found:</h1>
   <% end %>
   <div class="listing">
     <% @recipes.each do |recipe| %>

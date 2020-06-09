@@ -1247,20 +1247,20 @@ end
 
 ### destroy previous data
 # Recipe.destroy_all
-# Dose.destroy_all
-# IngredientGroup.destroy_all
-# Ingredient.destroy_all
+Dose.destroy_all
+IngredientGroup.destroy_all
+Ingredient.destroy_all
 
 ### read yaml files to import ingredients and ingredient groups
-# require 'yaml'
-# ingredients = YAML.load(File.read("db/yaml/ingredients.yml"))
-# ingredient_groups = YAML.load(File.read("db/yaml/ingredient_groups.yml"))
+require 'yaml'
+ingredients = YAML.load(File.read("db/yaml/ingredients.yml"))
+ingredient_groups = YAML.load(File.read("db/yaml/ingredient_groups.yml"))
 
 ### generate and group ingredients
-# Ingredient.generate_ingredients(ingredients)
-# IngredientGroup.generate_ingredient_groups(ingredient_groups)
-# IngredientGroup.all.each { |ing_group| ing_group.group_ingredients!(ingredient_groups[ing_group.name]) }
-# Ingredient.all.each { |ing| ing.groupify }
+Ingredient.generate_ingredients(ingredients)
+IngredientGroup.generate_ingredient_groups(ingredient_groups)
+IngredientGroup.all.each { |ing_group| ing_group.group_ingredients!(ingredient_groups[ing_group.name]) }
+Ingredient.all.each { |ing| ing.groupify }
 ### import recipes from URLs
 # Url.all[0..5000].each { |url| url.import! }
 Recipe.all.each { |recipe| recipe.scrape_ingredients! }

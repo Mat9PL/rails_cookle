@@ -24,7 +24,6 @@ class RecipesController < ApplicationController
     #   end
     @recipes = @recipes.paginate(page: params[:page], per_page: 6)
     @searched_ingredients.map { |e| e.name }
-    p @search
   end
 
   private

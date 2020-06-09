@@ -13,18 +13,8 @@ class RecipesController < ApplicationController
     end
     @all_recipes = policy_scope(Recipe)
     @found_recipes = select_recipes_including(@searched_ingredients)
-    @recipes = []
-    @found_recipes.each do |found_recipe|
-      @recipes.push(found_recipe)
-    end
-    # @recipes = policy_scope(Recipe).select do |recipe|
-    #   recipe.ingredients.include?(Ingredient.all.select do |ingredient|
-    #     ingredient.name.include?("a")
-    #     end)[0]
-    #   end
-    @recipes = @recipes.paginate(page: params[:page], per_page: 6)
+    @recipes = @found_recipes.paginate(page: params[:page], per_page: 6)
     @searched_ingredients.map { |e| e.name }
-    p @search
   end
 
   private

@@ -28,6 +28,7 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'will_paginate', '~> 3.3.0'
 gem 'devise'
 gem 'faker'
 gem "figaro"

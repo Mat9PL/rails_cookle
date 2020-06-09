@@ -1,5 +1,4 @@
 <div class="container">
-  <%= render 'shared/search_bar' %>
   <% if @recipes.count == 0 %>
     <h1>No recipes found for these ingredients. Please put some more ingredients, and we will find you something amazing to cook.</h1>
   <% elsif @recipes.count == 0 %>
@@ -29,4 +28,6 @@
       </div>
     <% end %>
   </div>
+<%= will_paginate @recipes, class: "apple_pagination" %>
 </div>
+

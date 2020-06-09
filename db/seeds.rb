@@ -1332,10 +1332,10 @@ end
 #   recipe.scrape_ingredients!
 #   puts "#{recipe} contains #{recipe.ingredients.join(" ")}"
 # end
+# Url.destroy_all
+# Url.scrape_links_from_bbc_good_food
 
 Dose.destroy_all
 Recipe.destroy_all
-Url.all[0..50].each { |url| url.import! }
-
-
+Url.all[0..800].each { |url| url.import! }
 Recipe.all.each { |recipe| recipe.scrape_ingredients! }

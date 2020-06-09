@@ -3,6 +3,8 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :doses
   belongs_to :url, optional: true
 
+  WillPaginate.per_page = 6
+
   def scrape_ingredients! # analyses the ingredients_text of a recipe to match ingredients
     self.doses.destroy_all
     puts "---#{self.name} contains:"

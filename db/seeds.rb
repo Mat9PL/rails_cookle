@@ -1265,3 +1265,4 @@ end
 # Url.all[0..5000].each { |url| url.import! }
 Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 
+

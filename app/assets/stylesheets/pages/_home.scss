@@ -12,7 +12,7 @@ h1 {
   font-size: 140px;
   font-family: $title-font4;
   font-weight: bold;
-  color: white;
+  color: white !important;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
 }
 
@@ -34,7 +34,7 @@ p {
   h1 {
     font-size: 72px;
   }
-  
+
   p {
     font-size: 20px;
   }
@@ -45,7 +45,7 @@ p {
   h1 {
     font-size: 80px;
   }
-  
+
   p {
     font-size: 28px;
   }
@@ -55,7 +55,7 @@ p {
   h1 {
     font-size: 140px;
   }
-  
+
   p {
     font-size: 36px;
   }

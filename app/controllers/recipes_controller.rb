@@ -8,23 +8,18 @@ class RecipesController < ApplicationController
     @search.each do |ingredient_group_id|
       unless ingredient_group_id == ""
         ingredient_group = IngredientGroup.find(ingredient_group_id.to_i)
-        @searched_ingredients += ingredient_group.ingredients
+        @searched_ingredients += ingredient_group.ingredient_ids
       end
     end
     @all_recipes = policy_scope(Recipe)
     @found_recipes = select_recipes_including(@searched_ingredients)
-    @recipes = @found_recipes.paginate(page: params[:page], per_page: 6)
-    @searched_ingredients.map { |e| e.name }
+    @recipes = @found_recipes.paginate(page: params[:page], per_page: 12)
   end
-
+  
   private
-
-  def convert_to_ingedients(ingredient_group)
-    ingredient_group.ingredients
-  end
-
+  
   def select_recipes_including(searched_ingredients)
     searched_ingredients = searched_ingredients.uniq
-    @all_recipes.select { |recipe| (recipe.ingredients - searched_ingredients.flatten).empty? }
+    @all_recipes.select { |recipe| (recipe.ingredient_ids - searched_ingredients.flatten).empty? }
   end
 end

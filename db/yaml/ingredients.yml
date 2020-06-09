@@ -1,0 +1,564 @@
+---
+- :name: cheese
+- :name: sugar
+- :name: chocolate
+- :name: honey
+- :name: parmesan
+- :name: cheddar
+- :name: american cheese
+- :name: cream cheese
+- :name: mozzarella
+- :name: goat cheese
+- :name: gouda
+- :name: pepperjack cheese
+- :name: romano
+- :name: brie
+- :name: pizza cheese
+- :name: swiss cheese
+- :name: gruyere
+- :name: pecorino cheese
+- :name: asiago
+- :name: mascarpone
+- :name: brick cheese
+- :name: camembert cheese
+- :name: edam cheese
+- :name: manchego
+- :name: stilton cheese
+- :name: emmenthaler cheese
+- :name: cottage cheese
+- :name: queso fresco cheese
+- :name: wensleydale cheese
+- :name: longhorn cheese
+- :name: double gloucester cheese
+- :name: raclette cheese
+- :name: lancashire cheese
+- :name: cheshire cheese
+- :name: red leicester cheese
+- :name: jarlsberg cheese
+- :name: bocconcini cheese
+- :name: farmer cheese
+- :name: garlic herb cheese
+- :name: italian cheese
+- :name: soft cheese
+- :name: blue cheese
+- :name: colby cheese
+- :name: pepper jack
+- :name: ricotta
+- :name: feta
+- :name: provolone
+- :name: velveeta
+- :name: teriyaki
+- :name: tomato sauce
+- :name: pesto
+- :name: milk
+- :name: powdered milk
+- :name: condensed milk
+- :name: couscous
+- :name: sour cream
+- :name: baking powder
+- :name: yeast
+- :name: yogurt
+- :name: cream
+- :name: evaporated milk
+- :name: whipped cream
+- :name: half and half cream
+- :name: chips
+- :name: monterey jack cheese
+- :name: fish sauce
+- :name: soy sauce
+- :name: ice cream
+- :name: tahini
+- :name: tabasco
+- :name: frosting
+- :name: buttermilk
+- :name: lard
+- :name: margarine
+- :name: coconut milk
+- :name: almond milk
+- :name: soy milk
+- :name: rice milk
+- :name: hemp milk
+- :name: non dairy creamer
+- :name: deer
+- :name: spam
+- :name: venison
+- :name: elk
+- :name: wild boar
+- :name: rabbit
+- :name: pheasant
+- :name: quail
+- :name: moose
+- :name: oxtail
+- :name: ostrich
+- :name: snail
+- :name: pigeon
+- :name: grouse
+- :name: sriracha
+- :name: chickpea
+- :name: lentil
+- :name: soybeans
+- :name: hummus
+- :name: edamame
+- :name: vegetables
+- :name: onion
+- :name: garlic
+- :name: tomato
+- :name: potato
+- :name: carrot
+- :name: pepper
+- :name: basil
+- :name: parsley
+- :name: broccoli
+- :name: corn
+- :name: spinach
+- :name: lettuce
+- :name: green beans
+- :name: ginger
+- :name: chili pepper
+- :name: celery
+- :name: rosemary
+- :name: red onion
+- :name: cucumber
+- :name: sweet potato
+- :name: pickle
+- :name: avocado
+- :name: zucchini
+- :name: frozen vegetables
+- :name: olive
+- :name: asparagus
+- :name: cabbage
+- :name: cauliflower
+- :name: dill
+- :name: kale
+- :name: ramen
+- :name: pumpkin
+- :name: squash
+- :name: mint
+- :name: scallion
+- :name: sun dried tomato
+- :name: shallot
+- :name: eggplant
+- :name: beet
+- :name: butternut squash
+- :name: horseradish
+- :name: leek
+- :name: caper
+- :name: brussels sprout
+- :name: artichoke heart
+- :name: chia seeds
+- :name: radish
+- :name: sauerkraut
+- :name: artichoke
+- :name: sweet pepper
+- :name: arugula
+- :name: spaghetti squash
+- :name: capsicum
+- :name: bok choy
+- :name: parsnip
+- :name: okra
+- :name: yam
+- :name: fennel
+- :name: turnip
+- :name: snow peas
+- :name: bean sprouts
+- :name: seaweed
+- :name: chard
+- :name: collard
+- :name: canned tomato
+- :name: pimiento
+- :name: watercress
+- :name: tomatillo
+- :name: rocket
+- :name: mustard greens
+- :name: bamboo shoot
+- :name: rutabaga
+- :name: endive
+- :name: broccoli rabe
+- :name: jicama
+- :name: kohlrabi
+- :name: hearts of palm
+- :name: butternut
+- :name: celery root
+- :name: daikon
+- :name: radicchio
+- :name: porcini
+- :name: chinese broccoli
+- :name: jerusalem artichoke
+- :name: cress
+- :name: water chestnut
+- :name: dulse
+- :name: micro greens
+- :name: burdock
+- :name: chayote
+- :name: fruits
+- :name: lemon
+- :name: apple
+- :name: banana
+- :name: lime
+- :name: strawberry
+- :name: orange
+- :name: pineapple
+- :name: blueberry
+- :name: raisin
+- :name: coconut
+- :name: grape
+- :name: peach
+- :name: raspberry
+- :name: cranberry
+- :name: mango
+- :name: pear
+- :name: blackberry
+- :name: cherry
+- :name: date
+- :name: watermelon
+- :name: berries
+- :name: kiwi
+- :name: grapefruit
+- :name: mandarin
+- :name: craisins
+- :name: cantaloupe
+- :name: plum
+- :name: apricot
+- :name: clementine
+- :name: prunes
+- :name: apple butter
+- :name: pomegranate
+- :name: nectarine
+- :name: fig
+- :name: tangerine
+- :name: papaya
+- :name: rhubarb
+- :name: sultanas
+- :name: plantain
+- :name: currant
+- :name: passion fruit
+- :name: guava
+- :name: persimmons
+- :name: lychee
+- :name: lingonberry
+- :name: tangelos
+- :name: kumquat
+- :name: boysenberry
+- :name: star fruit
+- :name: quince
+- :name: honeydew
+- :name: crabapples
+- :name: pork
+- :name: pork shoulder
+- :name: bacon
+- :name: pork chops
+- :name: ground pork
+- :name: pork roast
+- :name: pork ribs
+- :name: pancetta
+- :name: pork belly
+- :name: pork loin
+- :name: pork liver
+- :name: lamb
+- :name: lamb chops
+- :name: ground lamb
+- :name: leg of lamb
+- :name: lamb shoulder
+- :name: lamb shank
+- :name: lamb loin
+- :name: lamb liver
+- :name: beef
+- :name: ground beef
+- :name: beef roast
+- :name: corned beef
+- :name: beef ribs
+- :name: beef liver
+- :name: beef shank
+- :name: beef suet
+- :name: beef sirloin
+- :name: duck
+- :name: duck liver
+- :name: ham
+- :name: pastrami
+- :name: prosciutto
+- :name: bologna
+- :name: salami
+- :name: soppressata
+- :name: herbs
+- :name: cilantro
+- :name: veal
+- :name: ground veal
+- :name: veal cutlet
+- :name: veal chops
+- :name: veal shank
+- :name: goose
+- :name: goose liver
+- :name: turkey
+- :name: ground turkey
+- :name: nuts
+- :name: peanut butter
+- :name: almonds
+- :name: walnut
+- :name: pecan
+- :name: peanut
+- :name: cashew
+- :name: flax
+- :name: pine nut
+- :name: pistachio
+- :name: almond meal
+- :name: hazelnut
+- :name: macadamia
+- :name: almond paste
+- :name: chestnuts
+- :name: praline
+- :name: macaroon
+- :name: peanuts
+- :name: oil
+- :name: olive oil
+- :name: vegetable oil
+- :name: cooking spray
+- :name: canola oil
+- :name: sesame oil
+- :name: coconut oil
+- :name: peanut oil
+- :name: sunflower oil
+- :name: grape seed oil
+- :name: corn oil
+- :name: almond oil
+- :name: avocado oil
+- :name: safflower oil
+- :name: walnut oil
+- :name: hazelnut oil
+- :name: palm oil
+- :name: soybean oil
+- :name: mustard oil
+- :name: pistachio oil
+- :name: soya oil
+- :name: Beans
+- :name: black beans
+- :name: refried beans
+- :name: chili beans
+- :name: lima beans
+- :name: kidney beans
+- :name: pinto beans
+- :name: navy beans
+- :name: french beans
+- :name: red beans
+- :name: fava beans
+- :name: great northern beans
+- :name: cannellini beans
+- :name: liver
+- :name: turkey liver
+- :name: liver sausage
+- :name: foie gras
+- :name: broth/soup/stock
+- :name: stock
+- :name: lamb stock
+- :name: pork stock
+- :name: veal stock
+- :name: vegetable stock
+- :name: chicken broth
+- :name: mushroom soup
+- :name: beef broth
+- :name: tomato soup
+- :name: soup
+- :name: chicken soup
+- :name: onion soup
+- :name: vegetable soup
+- :name: celery soup
+- :name: vegetable bouillon
+- :name: broth
+- :name: pasta
+- :name: spaghetti
+- :name: linguine
+- :name: fusilli
+- :name: vermicelli
+- :name: capellini
+- :name: spaghettini
+- :name: bucatini
+- :name: Tagliatelle
+- :name: pappardelle
+- :name: fettuccine
+- :name: lasagne
+- :name: angel hair
+- :name: ravioli
+- :name: gnocchi
+- :name: bread
+- :name: bread crumbs
+- :name: pretzel
+- :name: cornbread
+- :name: croutons
+- :name: baguette
+- :name: flour
+- :name: pizza dough
+- :name: flour tortillas
+- :name: self rising flour
+- :name: bread flour
+- :name: puff pastry
+- :name: seafood
+- :name: shrimp
+- :name: crab
+- :name: prawns
+- :name: scallop
+- :name: clam
+- :name: lobster
+- :name: mussel
+- :name: oyster
+- :name: squid
+- :name: calamari
+- :name: crawfish
+- :name: octopus
+- :name: cockle
+- :name: conch
+- :name: sea urchin
+- :name: Vinegar
+- :name: wine vinegar
+- :name: apple cider vinegar
+- :name: cider vinegar
+- :name: rice vinegar
+- :name: champagne vinegar
+- :name: Salad dressing
+- :name: italian dressing
+- :name: vinaigrette dressing
+- :name: ranch dressing
+- :name: blue cheese dressing
+- :name: french dressing
+- :name: sesame dressing
+- :name: caesar dressing
+- :name: cocktail sauce
+- :name: fish
+- :name: salmon
+- :name: tilapia
+- :name: fish fillets
+- :name: cod
+- :name: anchovy
+- :name: smoked salmon
+- :name: sardines
+- :name: tuna
+- :name: whitefish
+- :name: halibut
+- :name: trout
+- :name: haddock
+- :name: flounder
+- :name: catfish
+- :name: mahi mahi
+- :name: mackerel
+- :name: sole
+- :name: sea bass
+- :name: red snapper
+- :name: swordfish
+- :name: pollock
+- :name: herring
+- :name: perch
+- :name: grouper
+- :name: caviar
+- :name: monkfish
+- :name: rockfish
+- :name: lemon sole
+- :name: pike
+- :name: barramundi
+- :name: eel
+- :name: bluefish
+- :name: carp
+- :name: cuttlefish
+- :name: pompano
+- :name: arctic char
+- :name: john dory
+- :name: marlin
+- :name: amberjack
+- :name: sturgeon
+- :name: sausage
+- :name: polish sausage
+- :name: bratwurst
+- :name: hot dog
+- :name: pepperoni
+- :name: chorizo
+- :name: salad
+- :name: mushroom
+- :name: portobello mushroom
+- :name: butter
+- :name: ghee
+- :name: chicken
+- :name: chicken roast
+- :name: chicken breast
+- :name: chicken thighs
+- :name: cooked chicken
+- :name: chicken wings
+- :name: ground chicken
+- :name: chicken giblets
+- :name: chicken tenders
+- :name: rice
+- :name: brown rice
+- :name: basmati rice
+- :name: jasmin rice
+- :name: parboiled rice
+- :name: egg
+- :name: chicken egg
+- :name: quail egg
+- :name: ostrich egg
+- :name: peas
+- :name: split peas
+- :name: snap peas
+- :name: gravy
+- :name: turkey gravy
+- :name: mushroom gravy
+- :name: sausage gravy
+- :name: onion gravy
+- :name: cream gravy
+- :name: pork gravy
+- :name: tomato gravy
+- :name: giblet gravy
+- :name: beef gravy
+- :name: wine
+- :name: white wine
+- :name: red wine
+- :name: cooking wine
+- :name: dessert wine
+- :name: port wine
+- :name: sparkling wine
+- :name: cabernet sauvignon
+- :name: shaoxing wine
+- :name: rice wine
+- :name: noodle
+- :name: udon noodle
+- :name: shirataki noodle
+- :name: alcohol
+- :name: beer
+- :name: schnapps
+- :name: vodka
+- :name: rum
+- :name: whiskey
+- :name: tequila
+- :name: sherry
+- :name: bourbon
+- :name: vermouth
+- :name: whisky
+- :name: liqueur
+- :name: brandy
+- :name: gin
+- :name: kahlua
+- :name: irish cream
+- :name: triple sec
+- :name: champagne
+- :name: amaretto
+- :name: ciclon
+- :name: drambuie
+- :name: bitters
+- :name: maraschino
+- :name: sake
+- :name: grand marnier
+- :name: absinthe
+- :name: madeira wine
+- :name: ouzo
+- :name: anisette
+- :name: grappa
+- :name: cognac
+- :name: chocolate liqueur
+- :name: burgundy wine
+- :name: limoncello
+- :name: creme de menthe
+- :name: bloody mary
+- :name: raspberry liquor
+- :name: curacao
+- :name: frangelico
+- :name: meat
+- :name: beef steak
+- :name: chicken leg
+- :name: marrow bones
+- :name: sweetbread
+- :name: alligator

@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 INGREDIENTS = [
-  { name: 'cheese' },
+  { name: 'cheese', regex: /ufoecrunnu/ },
   { name: 'sugar' },
   { name: 'chocolate' },
   { name: 'honey' },
@@ -1217,7 +1217,7 @@ INGREDIENT_GROUPS = {
   ]
 }
 
-def generate_fake_recipes
+def generate_fake_recipes # needs revision, doesn't work currently
   50.times do
     name = Faker::Food.dish
     description = Faker::Food.description
@@ -1247,14 +1247,21 @@ end
 
 ### destroy previous data
 # Recipe.destroy_all
+# Dose.destroy_all
 # IngredientGroup.destroy_all
 # Ingredient.destroy_all
 
+### read yaml files to import ingredients and ingredient groups
+# require 'yaml'
+# ingredients = YAML.load(File.read("db/yaml/ingredients.yml"))
+# ingredient_groups = YAML.load(File.read("db/yaml/ingredient_groups.yml"))
+
 ### generate and group ingredients
-# Ingredient.generate_ingredients(INGREDIENTS)
-# IngredientGroup.generate_ingredient_groups(INGREDIENT_GROUPS)
-# IngredientGroup.all.each { |ing_group| ing_group.group_ingredients!(INGREDIENT_GROUPS[ing_group.name]) }
+# Ingredient.generate_ingredients(ingredients)
+# IngredientGroup.generate_ingredient_groups(ingredient_groups)
+# IngredientGroup.all.each { |ing_group| ing_group.group_ingredients!(ingredient_groups[ing_group.name]) }
 # Ingredient.all.each { |ing| ing.groupify }
 ### import recipes from URLs
 # Url.all[0..5000].each { |url| url.import! }
 Recipe.all.each { |recipe| recipe.scrape_ingredients! }
+

@@ -1,42 +1,52 @@
 <div class="container">
+  <div class="ingredients-page">
   <%= simple_form_for :multiple_search, url: recipes_path, method: :get, collection: @ingredients do |f| %>
-  <div class="search-form-control">
-    <%= f.input :multiple_search, collection: @ingredient_groups, input_html: { multiple: true, class: "select2-form search-form-control" }, label: false %>
-    <br>
-    <button name="button" type="submit" class="button-search btn btn-flat">
-      <i class="fas fa-search"></i> Search
-    </button>
-  </div>
-<% end %>
-  <% if @found_recipes.count == 0 %>
-    <h1>No recipes found for these ingredients. Please put some more ingredients, and we will find you something amazing to cook.</h1>
-  <% elsif @found_recipes.count == 0 %>
-    <h2>1 recipe found:</h2>
-  <% else %>
-    <h1><%= @found_recipes.count %> recipes found:</h1>
+    <div class="search-form-control">
+      <%= f.input :multiple_search, collection: @ingredient_groups, input_html: { multiple: true, class: "select2-form search-form-control", include_blank: false, select: @searched_ingredient_groups }, label: false %>
+      <br>
+      <button name="button" type="submit" class="button-search btn btn-flat" id="search">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
   <% end %>
-  <div class="listing">
-    <% @recipes.each do |recipe| %>
-      <div class="listing-item">
-        <%= image_tag recipe.url_image %>
-        <div class="listing-item-infos">
-          <div>
-            <h2><%= recipe.name %></h2>
-            <p><%= recipe.description[0..200].strip %>...</p>
-          </div>
-          <div class="listing-item-tags">
-            <% recipe.ingredients.each do |ingredient| %>
-              <div class="listing-item-tag">
-                <%= ingredient.name %>
-              </div>
-            <% end %>
-            </div>
+    <h2>The below ingredients have been searched:</h2>
+    <div class="selected-ingredients">
+      <% @searched_ingredient_groups.each do |ingredient| %>
+        <div class="listing-item-tag">
+          <%= ingredient %>
         </div>
-        <!-- Button linking external recipe -->
-        <%= link_to 'See more', recipe.url.url, target: :_blank, class: "listing-item-expand" %>
-      </div>
+      <% end %>
+    </div>
+    <% if @found_recipes.count == 0 %>
+      <h2>No recipes found for these ingredients. Please put some more ingredients, and we will find you something amazing to cook.</h2>
+    <% elsif @found_recipes.count == 0 %>
+      <h2>1 recipe found:</h2>
+    <% else %>
+      <h2><%= @found_recipes.count %> recipes found:</h2>
     <% end %>
+    <div class="listing">
+      <% @recipes.each do |recipe| %>
+        <div class="listing-item">
+          <%= image_tag recipe.url_image %>
+          <div class="listing-item-infos">
+            <div>
+              <h2><%= recipe.name %></h2>
+              <p><%= recipe.description[0..200].strip %>...</p>
+            </div>
+            <div class="listing-item-tags">
+              <% recipe.ingredients.each do |ingredient| %>
+                <div class="listing-item-tag">
+                  <%= ingredient.name %>
+                </div>
+              <% end %>
+              </div>
+          </div>
+          <!-- Button linking external recipe -->
+          <%= link_to 'See more', recipe.url.url, target: :_blank, class: "listing-item-expand" %>
+        </div>
+      <% end %>
+    </div>
+    <%= will_paginate @recipes, class: "apple_pagination" %>
   </div>
-  <%= will_paginate @recipes, class: "apple_pagination" %>
 </div>
 

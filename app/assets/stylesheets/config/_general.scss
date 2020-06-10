@@ -3,3 +3,20 @@ body {
   // background-image: radial-gradient(circle at center, rgba(20, 180, 124, 0.65), rgba(17, 122, 85, 0.9)),url(https://thumbs.dreamstime.com/b/healthy-food-pattern-diet-seamless-fruit-vegetable-endless-textured-background-50457325.jpg);
   background-image: radial-gradient(circle at center, rgba(30, 221, 136, 0.65), rgba(17, 122, 85, 0.9)),url(https://thumbs.dreamstime.com/b/healthy-food-pattern-diet-seamless-fruit-vegetable-endless-textured-background-50457325.jpg);
 }
+
+h1 {
+  text-align: center;
+  font-size: 140px;
+  font-family: $title-font4;
+  font-weight: bold;
+  color: white !important;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+}
+
+h2 {
+  font-size: 70px;
+  font-family: $title-font4;
+  font-weight: bold;
+  color: white !important;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+}

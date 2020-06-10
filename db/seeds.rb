@@ -1,4 +1,6 @@
 require 'yaml'
+require 'open-uri'
+require 'nokogiri'
 
 def generate_fake_recipes # needs revision, doesn't work currently
   50.times do
@@ -28,14 +30,13 @@ def generate_fake_recipes # needs revision, doesn't work currently
   end
 end
 
+def import_recipes
+  ### import recipes from URLs
+  Url.all.each { |url| url.unmark_imported! }
+  Url.all[0..1000].each { |url| url.import! }
+end
 
-
-
-
-### import recipes from URLs
-# Url.all[0..5000].each { |url| url.import! }
-
-def update_ingredients_and_recipes
+def update_ingredients
   ### destroy previous data
   Dose.destroy_all
   puts 'doses destroyed'
@@ -53,32 +54,14 @@ def update_ingredients_and_recipes
   IngredientGroup.generate_ingredient_groups(ingredient_groups)
   IngredientGroup.all.each { |ing_group| ing_group.group_ingredients!(ingredient_groups[ing_group.name]) }
   Ingredient.all.each { |ing| ing.groupify }
-
-  ### analyze recipes
-  Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 end
 
-# update_ingredients_and_recipes
-
-
-def build_regex(attributes = {name: '', forbidden_prefixes: [], synonyms: []})
-# example: attributes = {name: 'cheese', forbidden_prefixes: ["gruyère", "stilton", "mascarpone"], synonyms: ["queso"]}
-  forbidden_prefixes = ""
-  name = attributes[:name]
-  input_synonyms = attributes[:synonyms]
-  input_forbidden_prefixes = attributes[:forbidden_prefixes]
-  if input_forbidden_prefixes.class == Array
-    input_forbidden_prefixes.each { |prefix| forbidden_prefixes += "(?<!#{prefix + " "})" }
-  elsif input_forbidden_prefixes.class == String
-    forbidden_prefixes = "(?<!#{input_forbidden_prefixes + " "})"
-  end
-  regex = "(#{forbidden_prefixes}\\b#{name}\\b)|(#{forbidden_prefixes}\\b#{name.pluralize}\\b)"
-  if input_synonyms.class == Array
-    input_synonyms.each { |synonym| regex += "|(#{forbidden_prefixes}\\b#{synonym}\\b)|(#{forbidden_prefixes}\\b#{synonym.pluralize}\\b)" }
-  elsif input_synonyms.class == String
-    regex += "|(#{forbidden_prefixes}\\b#{input_synonyms}\\b)|(#{forbidden_prefixes}\\b#{input_synonyms.pluralize}\\b)"
-  end
-  regex
+def update_recipes
+    ### analyze recipes
+    Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 end
 
-p Regexp.new(build_regex({name: 'cheese', synonyms: 'queso', forbidden_prefixes: 'gruyere'}))
+# Recipe.destroy_all
+# update_ingredients
+# import_recipes
+update_recipes

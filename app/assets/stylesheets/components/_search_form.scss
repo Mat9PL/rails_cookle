@@ -23,6 +23,12 @@ form {
   color: #77F8CB;
 }
 
+.multiple_search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .select2-selection--multiple {
   border: 1px solid #F4F4F4 !important;
   border-radius: 25px !important;

@@ -15,7 +15,7 @@
           <%= link_to "Home", "/", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Cookbook", "cookbooks/#{current_user.id}", class: "nav-link" %>
+          <%= link_to "Cookbook", cookbook_path(current_user.id), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <% avatar_url = current_user.facebook_picture_url || "logo avatar.png" %>

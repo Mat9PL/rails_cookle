@@ -62,6 +62,7 @@ def update_recipes
 end
 
 Recipe.destroy_all
+purs 'recipes destroyed'
 update_ingredients
 import_recipes
 update_recipes

@@ -6,7 +6,7 @@
 .listing-item {
   overflow: hidden;
   height: 200px;
-  background: white;
+  background-color: rgba(255, 255, 255, 0.75);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: flex-start;
@@ -21,19 +21,16 @@
   object-fit: cover;
 }
 
-.listing-item h2 {
-  font-size: 25px;
-  font-weight: bold;
-  margin: 0;
-}
 
 .listing-item p {
   font-size: 15px;
   margin-bottom: 0;
   margin-top: 4px;
-  color: grey;
+  color: rgb(94, 94, 94);
   text-shadow: 0px 0px 0px rgba(0,0,0,0.8);
   text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
 }
 
 .listing-item .listing-item-infos {
@@ -63,7 +60,8 @@
 }
 
 .listing-item-tag {
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(18, 124, 76);
+  box-shadow: 1px 1px 1px rgba($color: #020202, $alpha: 0.6);
   border-radius: 30px;
   font-size: 10px;
   padding: 2px 6px;

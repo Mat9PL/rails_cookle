@@ -61,8 +61,9 @@ def update_recipes
     Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 end
 
-Recipe.destroy_all
-puts 'recipes destroyed'
-update_ingredients
+# Recipe.destroy_all
+# puts 'recipes destroyed'
+# update_ingredients
+self.scrape_links_from_bbc_good_food
 import_recipes
 update_recipes

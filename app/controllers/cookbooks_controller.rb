@@ -14,6 +14,5 @@ class CookbooksController < ApplicationController
     # si je clique sur le boutton
 
     # j'ajoute une ligne dans la table cookbook
-
   end
 end

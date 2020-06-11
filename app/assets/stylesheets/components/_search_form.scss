@@ -5,14 +5,23 @@
 
 .search-form-control .btn {
   position: absolute;
+  border: none !important;
+  outline: none !important;
   top: 0px;
   bottom: 40px;
   right: 8px;
+  button:focus {
+    outline: none !important;
+  }
+}
+
+.search-form-control, .btn {
 }
 
 .button-search {
   margin-left: 10px;
   color: #1EDD88;
+  outline: none;
 }
 
 .button-search:hover {

@@ -1,5 +1,5 @@
 .heart {
-  color: rgba(0,0,0,0);
+  color: rgba(0,0,0,0.1);
   background-color: rgba(0,0,0,0);
   border: 0px;
   position: absolute;
@@ -8,6 +8,10 @@
   font-size: 30px;
   text-shadow: -1px 0 white, 0 1px white,
       1px 0 white, 0 -1px white;
+}
+
+.heart .btn:active {
+  outline: none;
 }
 
 .heart :hover {

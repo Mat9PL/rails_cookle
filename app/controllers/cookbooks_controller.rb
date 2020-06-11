@@ -8,4 +8,9 @@ class CookbooksController < ApplicationController
     end
     authorize @cookbook
   end
+
+  def favourite
+
+
+  end
 end

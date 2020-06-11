@@ -20,6 +20,7 @@ class RecipesController < ApplicationController
     @all_recipes = policy_scope(Recipe)
     @found_recipes = select_recipes_including(@searched_ingredient_ids)
     @recipes = @found_recipes.paginate(page: params[:page], per_page: 12)
+    # raise
   end
   
   private

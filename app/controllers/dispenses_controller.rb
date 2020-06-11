@@ -7,6 +7,8 @@ class DispensesController < ApplicationController
     else
       @dispense = Dispense.where(user: current_user).first
     end
+    @ingredient_group_ids = @dispense.ingredient_groups.map {|ing| ing.id.to_s }
     authorize @dispense
+
   end
 end

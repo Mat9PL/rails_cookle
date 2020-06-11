@@ -3,7 +3,7 @@ require 'will_paginate/array'
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
-    @ingredient_groups = IngredientGroup.all
+    @ingredient_groups = IngredientGroup.all.reverse
     if @search = params[:search].nil?
       @search = params[:multiple_search][:multiple_search] - [""]
     else
@@ -17,10 +17,10 @@ class RecipesController < ApplicationController
     @searched_ingredient_groups = @search.map do |id|
       IngredientGroup.find(id)
     end
-    @searched_ingredient_groups = @searched_ingredient_groups
     @all_recipes = policy_scope(Recipe)
     @found_recipes = select_recipes_including(@searched_ingredient_ids)
     @recipes = @found_recipes.paginate(page: params[:page], per_page: 12)
+    # raise
   end
   
   private

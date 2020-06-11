@@ -67,7 +67,7 @@ def update_recipes
 end
 
 # scrape_urls
-# update_ingredients
+update_ingredients
 # import_recipes
-# update_recipes
-Recipe.all[0..400].each { |r| r.destroy }
+update_recipes
+# Recipe.all[0..400].each { |r| r.destroy }

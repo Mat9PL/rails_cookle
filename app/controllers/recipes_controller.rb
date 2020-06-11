@@ -20,11 +20,11 @@ class RecipesController < ApplicationController
     @all_recipes = policy_scope(Recipe)
     @found_recipes = select_recipes_including(@searched_ingredient_ids)
     @recipes = @found_recipes.paginate(page: params[:page], per_page: 12)
-    # raise
+    @cookbook = current_user.cookbook
   end
-  
+
   private
-  
+
   def select_recipes_including(searched_ingredient_ids)
     searched_ingredient_ids = searched_ingredient_ids.uniq
     @all_recipes.select { |recipe| (recipe.ingredient_ids - searched_ingredient_ids.flatten).empty? }

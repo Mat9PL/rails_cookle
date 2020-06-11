@@ -2,7 +2,6 @@
   position: relative;
 }
 
-
 .search-form-control .btn {
   position: absolute;
   border: none !important;
@@ -24,8 +23,18 @@
   outline: none;
 }
 
+form {
+  display: flex;
+}
+
 .button-search:hover {
   color: #77F8CB;
+}
+
+.multiple_search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .select2-selection--multiple {
@@ -36,7 +45,7 @@
   min-height: 52px;
   font-size: 24px;
   box-shadow: 0 0 6px rgba(0,0,0,0.6);
-  background-color: white !important;
+  background-color: rgba(255, 255, 255, 0.863) !important;
   overflow-y: auto;
 }
 

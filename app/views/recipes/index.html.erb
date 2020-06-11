@@ -9,12 +9,8 @@
   <%= simple_form_for :multiple_search, url: recipes_path, method: :get do |f| %>
     <div class="search-form-control">
 
-      <%#= f.input :multiple_search, collection: @ingredient_groups, input_html: { multiple: true, class: "select2-form search-form-control", include_blank: false }, label: false %>
       <% collection = @ingredient_groups.map { |ing| [ing.name, ing.id, @searched_ingredient_groups.include?(ing) ? {"selected" => "selected"} : ""] } %>
       <%= f.input :multiple_search, collection: collection, input_html: { multiple: true, class: "select2-form search-form-control", include_blank: false }, label: false %>
-      <%#= f.input :multiple_search, input_html: { multiple: true, class: "select2-form search-form-control", include_blank: false }, label: false do %>
-        <%#= f.select :multiple_search, [["15296", "15296", {"selected" => "selected"}],["15297", "15297"]], { class: "select2-form search-form-control" } %>
-      <%# end %>
       <br>
       <button name="button" type="submit" class="button-search btn btn-flat" id="search">
         <i class="fas fa-search"></i> Search

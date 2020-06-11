@@ -17,3 +17,15 @@
 .heart :hover {
   color: rgb(215, 91, 91);
 }
+
+.heart-active {
+  color: red;
+  background-color: rgba(0,0,0,0);
+  border: 0px;
+  position: absolute;
+  left: 5px;
+  bottom: 150px;
+  font-size: 30px;
+  text-shadow: -1px 0 white, 0 1px white,
+      1px 0 white, 0 -1px white;
+}

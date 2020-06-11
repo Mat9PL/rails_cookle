@@ -7,7 +7,7 @@ class CookbooksController < ApplicationController
       @cookbook = Cookbook.where(user: current_user).first
     end
     authorize @cookbook
-    @recipes = Recipe.all.take(20)
+    @recipes = @cookbook.recipes
   end
 
   def favourite

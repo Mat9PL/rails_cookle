@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
       @searched_ingredient_ids += ingredient_group.ingredient_ids
     end
     @searched_ingredient_groups = @search.map do |id|
-      IngredientGroup.find(id).name
+      IngredientGroup.find(id)
     end
     @searched_ingredient_groups = @searched_ingredient_groups
     @all_recipes = policy_scope(Recipe)

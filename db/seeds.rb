@@ -66,7 +66,8 @@ def update_recipes
     Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 end
 
-scrape_urls
-update_ingredients
-import_recipes
-update_recipes
+# scrape_urls
+# update_ingredients
+# import_recipes
+# update_recipes
+Recipe.all[0..400].destroy_all

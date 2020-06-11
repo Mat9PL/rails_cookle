@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+  has_many :cookbook_inclusions
+  has_many :cookbooks, through: :cookbook_inclusions
   has_many :doses, dependent: :destroy
   has_many :ingredients, through: :doses
   belongs_to :url, optional: true
@@ -18,3 +20,4 @@ class Recipe < ApplicationRecord
     end
   end
 end
+

@@ -28,9 +28,16 @@
       <% @recipes.each do |recipe| %>
         <div class="listing-item">
           <%= image_tag recipe.url_image %>
-          <%= link_to cookbooks_path(@cookbook), class: "heart", method: :post do %>
-          <i class="fas fa-heart"></i>
+          <% unless @cookbook.recipes.include?(recipe) %>
+            <%= link_to cookbook_cookbook_inclusions_path(@cookbook, recipe_id: recipe.id), class: "heart", method: :post do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+          <% else %>
+            <%= link_to cookbook_inclusion_path(CookbookInclusion.where(cookbook: @cookbook).first), class: "heart-active", method: :delete do %>
+              <i class="fas fa-heart"></i>
+              <% end %>
           <% end %>
+
           <div class="listing-item-infos">
             <div>
               <h3><%= recipe.name %></h3>

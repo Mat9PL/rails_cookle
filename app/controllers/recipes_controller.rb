@@ -20,7 +20,12 @@ class RecipesController < ApplicationController
     @all_recipes = policy_scope(Recipe)
     @found_recipes = select_recipes_including(@searched_ingredient_ids)
     @recipes = @found_recipes.paginate(page: params[:page], per_page: 12)
-    @cookbook = current_user.cookbook
+    if Cookbook.where(user: current_user).empty?
+      @cookbook = Cookbook.new(user: current_user)
+      @cookbook.save
+    else
+      @cookbook = current_user.cookbook    
+    end
   end
 
   private

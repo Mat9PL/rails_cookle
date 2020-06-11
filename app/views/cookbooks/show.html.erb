@@ -7,7 +7,9 @@
       <% @recipes.each do |recipe| %>
         <div class="listing-item">
           <%= image_tag recipe.url_image %>
-          <button name="button" class="heart"><i class="fas fa-heart"></i></button>
+            <%= link_to cookbook_inclusion_path(CookbookInclusion.where(cookbook: @cookbook).first), class: "heart-active", method: :delete do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
           <div class="listing-item-infos">
             <div>
               <h3><%= recipe.name %></h3>

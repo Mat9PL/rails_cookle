@@ -47,8 +47,9 @@ cheese:
 - velveeta
 mushroom:
 - portobello mushroom
-- mushroom soup
 - mushroom
+onion:
+- red onion
 vegetables:
 - onion
 - garlic
@@ -149,6 +150,10 @@ butter:
 cream:
 - ricotta
 - cream
+- whipped cream
+- half and half cream
+- non dairy creamer
+- cream cheese
 fruits:
 - lemon
 - apple
@@ -202,7 +207,7 @@ fruits:
 - quince
 - honeydew
 - crabapples
-Beans:
+beans:
 - green beans
 - black beans
 - beans
@@ -222,7 +227,7 @@ meat:
 - ground beef
 - bacon
 - beef steak
-- ham
+- gammon
 - pork chops
 - chicken thighs
 - ground turkey
@@ -246,7 +251,6 @@ meat:
 - beef ribs
 - duck
 - pork belly
-- beef liver
 - leg of lamb
 - beef shank
 - veal
@@ -268,36 +272,24 @@ meat:
 - quail
 - oxtail
 - pheasant
-- lamb liver
 - moose
-- turkey liver
-- pork liver
 - veal shank
 - beef sirloin
 - sweetbread
 - wild boar
 - snail
 - pigeon
-- duck liver
-- goose liver
 - grouse
 - ostrich
-- alligator
 liver:
 - liver
-- turkey liver
-- lamb liver
-- pork liver
 - liver sausage
 - foie gras
-- duck liver
-- goose liver
 chicken:
 - chicken roast
 - chicken breast
 - chicken
 - chicken thighs
-- cooked chicken
 - chicken thighs
 - chicken wings
 - ground chicken
@@ -309,7 +301,6 @@ beef:
 - beef roast
 - corned beef
 - beef ribs
-- beef liver
 - beef shank
 - beef suet
 - beef sirloin
@@ -324,7 +315,6 @@ pork:
 - pancetta
 - pork belly
 - pork loin
-- pork liver
 lamb:
 - lamb
 - lamb chops
@@ -333,7 +323,6 @@ lamb:
 - lamb shoulder
 - lamb shank
 - lamb loin
-- lamb liver
 sausage:
 - polish sausage
 - bratwurst
@@ -344,7 +333,6 @@ sausage:
 - liver sausage
 goose:
 - goose
-- goose liver
 turkey:
 - ground turkey
 - turkey
@@ -356,12 +344,11 @@ veal:
 - veal shank
 duck:
 - duck
-- duck liver
 ham:
 - ham
+- gammon
 - pancetta
 - pastrami
-- prosciutto
 - prosciutto
 - bologna
 - salami
@@ -592,7 +579,6 @@ alcohol:
 - chocolate liqueur
 - burgundy wine
 - limoncello
-- creme de menthe
 - bloody mary
 - raspberry liquor
 - curacao

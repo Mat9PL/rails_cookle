@@ -38,11 +38,15 @@ end
 def import_recipes
   ### import recipes from URLs
   # Url.all.each { |url| url.unmark_imported! }
-  Url.all.each { |url| url.import! }
+  Url.all[0..5000].each { |url| url.import! }
 end
 
 def update_ingredients
   ### destroy previous data
+  DispenseInclusion.destroy_all
+  puts 'dispense_inclusions destroyed'
+  Dispense.destroy_all
+  puts 'cookbooks destroyed'
   Dose.destroy_all
   puts 'doses destroyed'
   IngredientGroup.destroy_all
@@ -65,9 +69,15 @@ def update_recipes
     ### analyze recipes
     Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 end
-
 # scrape_urls
 update_ingredients
-# import_recipes
+
+
+CookbookInclusion.destroy_all
+puts 'cookbooks_inclusions destroyed'
+Cookbook.destroy_all
+puts 'cookbooks destroyed'
+
+
+import_recipes
 update_recipes
-# Recipe.all[0..400].each { |r| r.destroy }

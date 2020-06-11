@@ -36,8 +36,6 @@
   - colby
   - feta
 - :name: haggis
-  :forbidden_prefixes:
-  :synonyms:
 - :name: sugar
 - :name: chocolate
 - :name: honey
@@ -101,7 +99,6 @@
 - :name: teriyaki
 - :name: tomato sauce
 - :name: pesto
-- :name: milk
 - :name: powdered milk
 - :name: condensed milk
 - :name: couscous
@@ -110,6 +107,8 @@
 - :name: yeast
 - :name: yogurt
 - :name: cream
+  :synonyms:
+  - crème fraîche
 - :name: evaporated milk
 - :name: whipped cream
 - :name: half and half cream
@@ -129,9 +128,14 @@
 - :name: soy milk
 - :name: rice milk
 - :name: hemp milk
+- :name: mustard
+- :name: milk
+- :name: gammon
 - :name: non dairy creamer
 - :name: deer
 - :name: spam
+- :name: ready-to-roll icing
+- :name: vegetable fat
 - :name: venison
 - :name: elk
 - :name: wild boar
@@ -314,7 +318,6 @@
 - :name: pancetta
 - :name: pork belly
 - :name: pork loin
-- :name: pork liver
 - :name: lamb
 - :name: lamb chops
 - :name: ground lamb
@@ -322,18 +325,15 @@
 - :name: lamb shoulder
 - :name: lamb shank
 - :name: lamb loin
-- :name: lamb liver
 - :name: beef
 - :name: ground beef
 - :name: beef roast
 - :name: corned beef
 - :name: beef ribs
-- :name: beef liver
 - :name: beef shank
 - :name: beef suet
 - :name: beef sirloin
 - :name: duck
-- :name: duck liver
 - :name: ham
 - :name: pastrami
 - :name: prosciutto
@@ -348,7 +348,6 @@
 - :name: veal chops
 - :name: veal shank
 - :name: goose
-- :name: goose liver
 - :name: turkey
 - :name: ground turkey
 - :name: nuts
@@ -440,8 +439,6 @@
 - :name: great northern beans
 - :name: cannellini beans
 - :name: liver
-- :name: turkey liver
-- :name: liver sausage
 - :name: foie gras
 - :name: stock
   :forbidden_prefixes:
@@ -454,7 +451,6 @@
 - :name: veal stock
 - :name: vegetable stock
 - :name: chicken broth
-- :name: mushroom soup
 - :name: beef broth
 - :name: tomato soup
 - :name: soup
@@ -476,7 +472,7 @@
 - :name: capellini
 - :name: spaghettini
 - :name: bucatini
-- :name: Tagliatelle
+- :name: tagliatelle
 - :name: pappardelle
 - :name: fettuccine
 - :name: lasagne
@@ -491,9 +487,7 @@
 - :name: baguette
 - :name: flour
 - :name: pizza dough
-- :name: flour tortillas
-- :name: self rising flour
-- :name: bread flour
+- :name: tortilla
 - :name: puff pastry
 - :name: seafood
 - :name: shrimp
@@ -590,7 +584,6 @@
 - :name: chicken roast
 - :name: chicken breast
 - :name: chicken thighs
-- :name: cooked chicken
 - :name: chicken wings
 - :name: ground chicken
 - :name: chicken giblets
@@ -685,7 +678,6 @@
 - :name: chocolate liqueur
 - :name: burgundy wine
 - :name: limoncello
-- :name: creme de menthe
 - :name: bloody mary
 - :name: raspberry liquor
 - :name: curacao
@@ -695,4 +687,3 @@
 - :name: chicken leg
 - :name: marrow bones
 - :name: sweetbread
-- :name: alligator

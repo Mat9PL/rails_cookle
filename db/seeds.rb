@@ -64,6 +64,6 @@ end
 # Recipe.destroy_all
 # puts 'recipes destroyed'
 # update_ingredients
-self.scrape_links_from_bbc_good_food
+Url.scrape_links_from_bbc_good_food
 import_recipes
 update_recipes

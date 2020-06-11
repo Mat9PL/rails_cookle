@@ -70,4 +70,4 @@ end
 # update_ingredients
 # import_recipes
 # update_recipes
-Recipe.all[0..400].destroy_all
+Recipe.all[0..400].each { |r| r.destroy }

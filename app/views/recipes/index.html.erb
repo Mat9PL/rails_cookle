@@ -32,9 +32,12 @@
       <% @recipes.each do |recipe| %>
         <div class="listing-item">
           <%= image_tag recipe.url_image %>
+          <button name="button" class="heart"><i class="fas fa-heart"></i></button>
           <div class="listing-item-infos">
             <div>
               <h3><%= recipe.name %></h3>
+
+ 
               <p><%= recipe.description[0..200].strip %>...</p>
             </div>
             <div class="listing-item-tags">
@@ -50,7 +53,10 @@
         </div>
       <% end %>
     </div>
+
     <%= will_paginate @recipes, class: "apple_pagination" %>
+
   </div>
 </div>
+
 

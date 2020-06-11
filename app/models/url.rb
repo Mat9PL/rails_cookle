@@ -37,7 +37,7 @@ class Url < ApplicationRecord
       new_recipe = Recipe.new(
         name: nokogiri_file.search('h1').text.strip,
         url_image: nokogiri_file.search('.ratio-11-10 img')[0].attributes['src'].value,
-        ingredients_text: nokogiri_file.search('.ingredients-list__item').map { |element| element.text.strip }.join(" ").downcase,
+        ingredients_text: nokogiri_file.search('.ingredients-list__content .ingredients-list__group .ingredients-list__item').map { |el| el.attributes['content'].value }.join(" ").downcase,
         description: (nokogiri_file.search('.method__item p').map { |element| element.text.strip }).join(" "),
         url: self,
         source: url.match(/([a-z]+\.[a-z]+)\//)

@@ -1,5 +1,43 @@
 ---
 - :name: cheese
+  :forbidden_prefixes:
+  - gruyère
+  - gruyere
+  - stilton
+  - mascarpone
+  - american
+  - cream
+  - goat
+  - pepperjack
+  - pizza
+  - swiss
+  - pecorino
+  - brick
+  - camembert
+  - edam
+  - stilton
+  - emmenthaler
+  - cottage
+  - fresco
+  - wensleydale
+  - longhorn
+  - gloucester
+  - raclette
+  - lancashire
+  - cheshire
+  - leicester
+  - jarlsberg
+  - bocconcini
+  - farmer
+  - herb
+  - italian
+  - soft
+  - blue
+  - colby
+  - feta
+- :name: haggis
+  :forbidden_prefixes:
+  :synonyms:
 - :name: sugar
 - :name: chocolate
 - :name: honey
@@ -11,19 +49,32 @@
 - :name: goat cheese
 - :name: gouda
 - :name: pepperjack cheese
+  :synonyms:
+  - pepperjack
 - :name: romano
 - :name: brie
 - :name: pizza cheese
 - :name: swiss cheese
-- :name: gruyere
+- :name: gruyere cheese
+  :synonyms:
+  - gruyere
+  - gruyère
 - :name: pecorino cheese
+  :synonyms:
+  - pecorino
 - :name: asiago
 - :name: mascarpone
 - :name: brick cheese
 - :name: camembert cheese
+  :synonyms:
+  - camembert
 - :name: edam cheese
+  :synonyms:
+  - edam
 - :name: manchego
 - :name: stilton cheese
+  :synonyms:
+  - stilton
 - :name: emmenthaler cheese
 - :name: cottage cheese
 - :name: queso fresco cheese
@@ -44,7 +95,7 @@
 - :name: colby cheese
 - :name: pepper jack
 - :name: ricotta
-- :name: feta
+- :name: feta cheese
 - :name: provolone
 - :name: velveeta
 - :name: teriyaki
@@ -104,6 +155,8 @@
 - :name: garlic
 - :name: tomato
 - :name: potato
+  :synonyms:
+  - potatoe
 - :name: carrot
 - :name: pepper
 - :name: basil
@@ -120,9 +173,13 @@
 - :name: red onion
 - :name: cucumber
 - :name: sweet potato
+  :synonyms:
+  - sweet potatoe
 - :name: pickle
 - :name: avocado
 - :name: zucchini
+  :synonyms:
+  - courgette
 - :name: frozen vegetables
 - :name: olive
 - :name: asparagus
@@ -138,6 +195,8 @@
 - :name: sun dried tomato
 - :name: shallot
 - :name: eggplant
+  :synonyms:
+  - aubergine
 - :name: beet
 - :name: butternut squash
 - :name: horseradish
@@ -193,6 +252,8 @@
 - :name: fruits
 - :name: lemon
 - :name: apple
+  :synonyms:
+  - granny smith
 - :name: banana
 - :name: lime
 - :name: strawberry
@@ -309,6 +370,26 @@
 - :name: macaroon
 - :name: peanuts
 - :name: oil
+  :forbidden_prefixes:
+  - olive
+  - vegetable
+  - canola
+  - sesame
+  - coconut
+  - peanut
+  - sunflower
+  - seed
+  - corn
+  - almond
+  - avocado
+  - safflower
+  - walnut
+  - hazelnut
+  - palm
+  - soybean
+  - mustard
+  - pistachio
+  - soya
 - :name: olive oil
 - :name: vegetable oil
 - :name: cooking spray
@@ -329,10 +410,26 @@
 - :name: mustard oil
 - :name: pistachio oil
 - :name: soya oil
-- :name: Beans
+- :name: beans
+  :forbidden_prefixes:
+  - black
+  - refried
+  - chili
+  - chilli
+  - lima
+  - kidney
+  - pinto
+  - navy
+  - french
+  - red
+  - fava
+  - northern
+  - cannellini
 - :name: black beans
 - :name: refried beans
 - :name: chili beans
+  :synonyms:
+  - chilli beans
 - :name: lima beans
 - :name: kidney beans
 - :name: pinto beans
@@ -346,8 +443,12 @@
 - :name: turkey liver
 - :name: liver sausage
 - :name: foie gras
-- :name: broth/soup/stock
 - :name: stock
+  :forbidden_prefixes:
+  - lamb
+  - pork
+  - veal
+  - vegetable
 - :name: lamb stock
 - :name: pork stock
 - :name: veal stock
@@ -363,7 +464,11 @@
 - :name: celery soup
 - :name: vegetable bouillon
 - :name: broth
+  :forbidden_prefixes:
+  - chicken
+  - beef
 - :name: pasta
+- :name: macaroni
 - :name: spaghetti
 - :name: linguine
 - :name: fusilli
@@ -393,7 +498,7 @@
 - :name: seafood
 - :name: shrimp
 - :name: crab
-- :name: prawns
+- :name: prawn
 - :name: scallop
 - :name: clam
 - :name: lobster
@@ -412,7 +517,15 @@
 - :name: cider vinegar
 - :name: rice vinegar
 - :name: champagne vinegar
-- :name: Salad dressing
+- :name: salad dressing
+  :forbidden_prefixes:
+  - italian
+  - vinaigrette
+  - ranch
+  - cheese
+  - french
+  - sesame
+  - caesar
 - :name: italian dressing
 - :name: vinaigrette dressing
 - :name: ranch dressing
@@ -483,11 +596,20 @@
 - :name: chicken giblets
 - :name: chicken tenders
 - :name: rice
+  :forbidden_prefixes:
+  - brown
+  - basmati
+  - jasmin
+  - parboiled
 - :name: brown rice
 - :name: basmati rice
 - :name: jasmin rice
 - :name: parboiled rice
 - :name: egg
+  :forbidden_prefixes:
+  - chicken
+  - quail
+  - ostrich
 - :name: chicken egg
 - :name: quail egg
 - :name: ostrich egg
@@ -505,6 +627,15 @@
 - :name: giblet gravy
 - :name: beef gravy
 - :name: wine
+  :forbidden_prefixes:
+  - white
+  - red
+  - cooking
+  - dessert
+  - port
+  - sparkling
+  - shaoxing
+  - rice
 - :name: white wine
 - :name: red wine
 - :name: cooking wine
@@ -515,6 +646,9 @@
 - :name: shaoxing wine
 - :name: rice wine
 - :name: noodle
+  :forbidden_prefixes:
+  - udon
+  - shirataki
 - :name: udon noodle
 - :name: shirataki noodle
 - :name: alcohol

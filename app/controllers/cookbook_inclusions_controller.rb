@@ -11,7 +11,7 @@ class CookbookInclusionsController < ApplicationController
 
   def destroy
     @cookbook_inclusion = CookbookInclusion.find(params[:id])
-    authorize @cookbook_inclusion
     @cookbook_inclusion.destroy
+    authorize @cookbook_inclusion
   end
 end

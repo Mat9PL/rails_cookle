@@ -1,7 +1,7 @@
 <div class="container">
-  <% if @recipes.count == 0 %>
+  <% if @found_recipes.count == 0 %>
     <h1>No recipes found for these ingredients. Please put some more ingredients, and we will find you something amazing to cook.</h1>
-  <% elsif @recipes.count == 0 %>
+  <% elsif @found_recipes.count == 0 %>
     <h2>1 recipe found:</h2>
   <% else %>
     <h1><%= @found_recipes.count %> recipes found:</h1>

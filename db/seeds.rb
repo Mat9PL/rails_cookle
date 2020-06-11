@@ -30,6 +30,11 @@ def generate_fake_recipes # needs revision, doesn't work currently
   end
 end
 
+def scrape_urls
+  Url.scrape_links_from_bbc_good_food
+end
+
+
 def import_recipes
   ### import recipes from URLs
   # Url.all.each { |url| url.unmark_imported! }
@@ -61,9 +66,7 @@ def update_recipes
     Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 end
 
-# Url.scrape_links_from_bbc_good_food
-# Recipe.destroy_all
-# puts 'recipes destroyed'
+scrape_urls
 update_ingredients
 import_recipes
 update_recipes

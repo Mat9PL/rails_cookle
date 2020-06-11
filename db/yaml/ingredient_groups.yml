@@ -321,7 +321,6 @@ pork:
 - ground pork
 - pork roast
 - pork ribs
-- pork shoulder
 - pancetta
 - pork belly
 - pork loin
@@ -432,7 +431,7 @@ fish:
 seafood:
 - shrimp
 - crab
-- prawns
+- prawn
 - scallop
 - clam
 - lobster
@@ -558,6 +557,7 @@ pasta:
 - angel hair
 - ravioli
 - gnocchi
+- macaroni
 alcohol:
 - beer
 - schnapps

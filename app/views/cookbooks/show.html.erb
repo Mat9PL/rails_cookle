@@ -1,3 +1,32 @@
+<div class="container">
+  <div class="ingredients-page">
 <% if policy(Cookbook).show? %>
-  <h1>Coocle</h1>
+  <h1>Cookbook</h1>
 <% end %>
+<div class="listing">
+      <% @recipes.each do |recipe| %>
+        <div class="listing-item">
+          <%= image_tag recipe.url_image %>
+          <button name="button" class="heart"><i class="fas fa-heart"></i></button>
+          <div class="listing-item-infos">
+            <div>
+              <h3><%= recipe.name %></h3>
+
+
+              <p><%= recipe.description[0..200].strip %>...</p>
+            </div>
+            <div class="listing-item-tags">
+              <% recipe.ingredients.each do |ingredient| %>
+                <div class="listing-item-tag">
+                  <%= ingredient.name %>
+                </div>
+              <% end %>
+              </div>
+          </div>
+          <!-- Button linking external recipe -->
+          <%= link_to 'See more', recipe.url.url, target: :_blank, class: "listing-item-expand" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@
 
   <%= simple_form_for :multiple_search, url: recipes_path, method: :get do |f| %>
     <div class="search-form-control">
-      
+
       <%#= f.input :multiple_search, collection: @ingredient_groups, input_html: { multiple: true, class: "select2-form search-form-control", include_blank: false }, label: false %>
       <% collection = @ingredient_groups.map { |ing| [ing.name, ing.id, @searched_ingredient_groups.include?(ing) ? {"selected" => "selected"} : ""] } %>
       <%= f.input :multiple_search, collection: collection, input_html: { multiple: true, class: "select2-form search-form-control", include_blank: false }, label: false %>
@@ -32,12 +32,14 @@
       <% @recipes.each do |recipe| %>
         <div class="listing-item">
           <%= image_tag recipe.url_image %>
-          <button name="button" class="heart"><i class="fas fa-heart"></i></button>
+          <%= link_to cookbook_path(@cookbook), class: "heart", method: :post do %>
+          <i class="fas fa-heart"></i>
+          <% end %>
           <div class="listing-item-infos">
             <div>
               <h3><%= recipe.name %></h3>
 
- 
+
               <p><%= recipe.description[0..200].strip %>...</p>
             </div>
             <div class="listing-item-tags">

@@ -99,6 +99,7 @@
 - :name: teriyaki
 - :name: tomato sauce
 - :name: pesto
+- :name: milk
 - :name: powdered milk
 - :name: condensed milk
 - :name: couscous
@@ -129,7 +130,6 @@
 - :name: rice milk
 - :name: hemp milk
 - :name: mustard
-- :name: milk
 - :name: gammon
 - :name: non dairy creamer
 - :name: deer

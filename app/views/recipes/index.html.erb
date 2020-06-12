@@ -30,11 +30,11 @@
           <%= image_tag recipe.url_image %>
           <% unless @cookbook.nil? %>
             <% if @cookbook.recipes.include?(recipe) %>
+            <%= link_to cookbook_inclusion_path(CookbookInclusion.where(cookbook: @cookbook).first), class: "heart-active", method: :delete, remote: true do %>
                 <i class="fas fa-heart"></i>
-              <%= link_to cookbook_inclusion_path(CookbookInclusion.where(cookbook: @cookbook).first), class: "heart-active", method: :delete do %>
               <% end %>
-            <% elsif !params[:user_id].nil? %>
-              <%= link_to cookbook_cookbook_inclusions_path(@cookbook, recipe_id: recipe.id), class: "heart", method: :post do %>
+            <% elsif !@cookbook.recipes.include?(recipe) %>
+              <%= link_to cookbook_cookbook_inclusions_path(@cookbook, recipe_id: recipe.id), class: "heart", method: :post, remote: true do %>
                 <i class="fas fa-heart"></i>
                 <% end %>
             <% end %>

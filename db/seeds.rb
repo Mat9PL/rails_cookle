@@ -69,15 +69,15 @@ def update_recipes
     ### analyze recipes
     Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 end
-scrape_urls
+# scrape_urls
 update_ingredients
 
 
-CookbookInclusion.destroy_all
-puts 'cookbooks_inclusions destroyed'
-Cookbook.destroy_all
-puts 'cookbooks destroyed'
+# CookbookInclusion.destroy_all
+# puts 'cookbooks_inclusions destroyed'
+# Cookbook.destroy_all
+# puts 'cookbooks destroyed'
 
 
-import_recipes
+# import_recipes
 update_recipes

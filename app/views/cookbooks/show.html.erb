@@ -1,19 +1,19 @@
-<div class="cookbook">
-  <div class="container">
-    <div class="ingredients-page">
-  <% if policy(Cookbook).show? %>
-    <h1>Cookbook</h1>
-  <% end %>
-  <div class="listing">
-        <% @recipes.each do |recipe| %>
-          <div class="listing-item">
-            <%= image_tag recipe.url_image %>
-              <%= link_to cookbook_inclusion_path(CookbookInclusion.where(cookbook: @cookbook).first), class: "heart-active", method: :delete do %>
-                <i class="fas fa-heart"></i>
-              <% end %>
-            <div class="listing-item-infos">
-              <div>
-                <h3><%= recipe.name %></h3>
+
+<div class="container">
+  <div class="ingredients-page">
+<% if policy(Cookbook).show? %>
+  <h1>Cookbook</h1>
+<% end %>
+<div class="listing">
+      <% @recipes.each do |recipe| %>
+        <div class="listing-item">
+          <%= image_tag recipe.url_image %>
+            <%= link_to cookbook_inclusion_path(CookbookInclusion.where(cookbook: @cookbook, recipe: recipe).first, from: controller_name), class: "heart-active", method: :delete, remote: true do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+          <div class="listing-item-infos">
+            <div>
+              <h3><%= recipe.name %></h3>
 
 
                 <p><%= recipe.description[0..150].strip %>...</p>

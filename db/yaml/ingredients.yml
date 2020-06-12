@@ -99,6 +99,7 @@
 - :name: teriyaki
 - :name: tomato sauce
 - :name: pesto
+- :name: milk
 - :name: powdered milk
 - :name: condensed milk
 - :name: couscous
@@ -129,7 +130,6 @@
 - :name: rice milk
 - :name: hemp milk
 - :name: mustard
-- :name: milk
 - :name: gammon
 - :name: non dairy creamer
 - :name: deer
@@ -176,6 +176,7 @@
 - :name: rosemary
 - :name: red onion
 - :name: cucumber
+- :name: celeriac
 - :name: sweet potato
   :synonyms:
   - sweet potatoe
@@ -505,7 +506,7 @@
 - :name: cockle
 - :name: conch
 - :name: sea urchin
-- :name: Vinegar
+- :name: vinegar
 - :name: wine vinegar
 - :name: apple cider vinegar
 - :name: cider vinegar

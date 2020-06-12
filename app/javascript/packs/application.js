@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("select2")
-
+//= require turbolinks
 
 // window.jQuery = $;
 // window.$ = $;

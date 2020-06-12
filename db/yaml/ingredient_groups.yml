@@ -50,6 +50,9 @@ mushroom:
 - mushroom
 onion:
 - red onion
+flour:
+- flour
+- corn flour
 vegetables:
 - onion
 - garlic

@@ -20,7 +20,7 @@
 }
 
 .heart-active {
-  color: red;
+  color: rgb(215, 91, 91);
   background-color: rgba(0,0,0,0);
   border: 0px;
   position: absolute;
@@ -32,11 +32,17 @@
 }
 
 .button-dispenses {
+  color: $green;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.button-dispenses:hover {
   color: white;
   background-color: $green;
-  padding: 10px;
-  border-radius: 4px;
 }
+
 
  a {
   color: white;

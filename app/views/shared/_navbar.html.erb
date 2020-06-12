@@ -4,10 +4,10 @@
     <!-- <span class="navbar-toggler-icon"></span> -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to "Home", "/", class: "nav-link" %>
         </li>
+      <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to "My cookbook", cookbook_path(current_user.id), class: "nav-link" %>
         </li>

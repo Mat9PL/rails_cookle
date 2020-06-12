@@ -29,3 +29,21 @@
   text-shadow: -1px 0 white, 0 1px white,
       1px 0 white, 0 -1px white;
 }
+
+.button-dispenses {
+  color: white;
+  background-color: $green;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+ a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  background-color: #6AF090;
+  text-decoration: none;
+}

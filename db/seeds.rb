@@ -69,7 +69,7 @@ def update_recipes
     ### analyze recipes
     Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 end
-# scrape_urls
+scrape_urls
 update_ingredients
 
 

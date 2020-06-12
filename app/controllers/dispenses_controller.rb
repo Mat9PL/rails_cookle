@@ -1,6 +1,6 @@
 class DispensesController < ApplicationController
   def show
-    @ingredient_groups = IngredientGroup.all
+    @ingredient_groups = IngredientGroup.all.reverse
     if Dispense.where(user: current_user).empty?
       @dispense = Dispense.new(user: current_user)
       @dispense.save

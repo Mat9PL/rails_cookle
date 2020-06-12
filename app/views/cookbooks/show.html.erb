@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="ingredients-page">
 <% if policy(Cookbook).show? %>
@@ -15,20 +16,21 @@
               <h3><%= recipe.name %></h3>
 
 
-              <p><%= recipe.description[0..150].strip %>...</p>
-            </div>
-            <div class="listing-item-tags">
-              <% recipe.ingredients.each do |ingredient| %>
-                <div class="listing-item-tag">
-                  <%= ingredient.name %>
-                </div>
-              <% end %>
+                <p><%= recipe.description[0..150].strip %>...</p>
               </div>
+              <div class="listing-item-tags">
+                <% recipe.ingredients.each do |ingredient| %>
+                  <div class="listing-item-tag">
+                    <%= ingredient.name %>
+                  </div>
+                <% end %>
+                </div>
+            </div>
+            <!-- Button linking external recipe -->
+            <%= link_to 'See more', recipe.url.url, target: :_blank, class: "listing-item-expand" %>
           </div>
-          <!-- Button linking external recipe -->
-          <%= link_to 'See more', recipe.url.url, target: :_blank, class: "listing-item-expand" %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

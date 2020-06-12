@@ -1,21 +1,23 @@
-<div class="container">
-  <div class="dispense-page">
-    <h1>My pantry</h1>
-    <h2>Save the ingredients you have available, so you can access them later!</h2>
+<div class="pantry">
+  <div class="container">
+    <div class="dispense-page">
+      <h1>My pantry</h1>
+      <h2>Save the ingredients you have available, so you can access them later!</h2>
 
 
 
-    <%= simple_form_for :search, url: dispense_dispense_inclusions_path(@dispense), method: :post do |f| %>
-      <div class="search-form-control">
-        <% collection = @ingredient_groups.map { |ing| [ing.name, ing.id, @dispense.ingredient_groups.include?(ing) ? {"selected" => "selected"} : ""] } %>
-        <%= f.input :multiple_search, collection: collection, input_html: { multiple: true, class: "select2-form search-form-control", include_blank: false }, label: false %>
-        <br>
-        <button name="button" type="submit" class="button-search btn">
-          Save!
-        </button>
-      </div>
-    <% end %>
+      <%= simple_form_for :search, url: dispense_dispense_inclusions_path(@dispense), method: :post do |f| %>
+        <div class="search-form-control">
+          <% collection = @ingredient_groups.map { |ing| [ing.name, ing.id, @dispense.ingredient_groups.include?(ing) ? {"selected" => "selected"} : ""] } %>
+          <%= f.input :multiple_search, collection: collection, input_html: { multiple: true, class: "select2-form search-form-control", include_blank: false }, label: false %>
+          <br>
+          <button name="button" type="submit" class="button-search btn">
+            Save!
+          </button>
+        </div>
+      <% end %>
 
-    <%= link_to 'Show me recipes I can do!', recipes_path(search: {multiple_search: @ingredient_group_ids}), class: "button-dispenses" %>
+      <%= link_to 'Show me recipes I can do!', recipes_path(search: {multiple_search: @ingredient_group_ids}), class: "button-dispenses" %>
+    </div>
   </div>
 </div>

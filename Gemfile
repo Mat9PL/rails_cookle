@@ -36,6 +36,7 @@ gem 'pundit'
 gem 'pg_search', '~> 2.3.0'
 gem "omniauth-facebook"
 gem 'acts_as_favoritor'
+gem 'turbolinks_render'
 
 
 gem 'autoprefixer-rails'

@@ -16,6 +16,7 @@
 
 .heart :hover {
   color: rgb(215, 91, 91);
+  background-color: transparent !important;
 }
 
 .heart-active {
@@ -44,6 +45,10 @@
 
 a:hover {
   color: white;
-  background-color: #6AF090;
   text-decoration: none;
+}
+
+button:focus, button:active {
+  outline: none !important;
+  box-shadow: none !important;
 }

@@ -4,6 +4,7 @@
   text-align: center;
   padding: 1em;
   cursor: default;
+  font-size: 20px;
 }
 
 .apple_pagination a, .apple_pagination span {
@@ -34,5 +35,5 @@
 }
 
 .apple_pagination a:hover, .apple_pagination a:focus {
-  text-decoration: underline;
+  text-decoration: none;
 }

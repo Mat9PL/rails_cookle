@@ -1,3 +1,4 @@
+<div class="home">
 <div class="container">
   <div class="ingredients-page">
       <br>
@@ -45,7 +46,7 @@
               <h3><%= recipe.name %></h3>
 
 
-              <p><%= recipe.description[0..200].strip %>...</p>
+              <p><%= recipe.description[0..100].strip %>...</p>
             </div>
             <div class="listing-item-tags">
               <% recipe.ingredients.each do |ingredient| %>

@@ -5,12 +5,14 @@
 .search-form-control .btn {
   position: absolute;
   border: none !important;
-  outline: none !important;
   top: 0px;
   bottom: 40px;
   right: 8px;
-  button:focus {
+  outline-color: white !important;
+  :focus {
     outline: none !important;
+    box-shadow: none !important;
+    outline-style: none !important;
   }
 }
 
@@ -20,7 +22,6 @@
 .button-search {
   margin-left: 10px;
   color: #1EDD88;
-  outline: none;
 }
 
 form {
@@ -66,6 +67,7 @@ form {
   font-weight: bold;
   color: white  !important;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  background-color: #1EDD88 !important;
 }
 
 // Smallest device

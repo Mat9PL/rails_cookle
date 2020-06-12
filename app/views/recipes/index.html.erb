@@ -30,11 +30,11 @@
           <%= image_tag recipe.url_image %>
           <% unless @cookbook.nil? %>
             <% if @cookbook.recipes.include?(recipe) %>
-            <%= link_to cookbook_inclusion_path(CookbookInclusion.where(cookbook: @cookbook, recipe: recipe).first), class: "heart-active", method: :delete, :confirm=>'Are you sure?', remote: true do %>
+            <%= link_to cookbook_inclusion_path(CookbookInclusion.where(cookbook: @cookbook, recipe: recipe).first, from: controller_name, searched: [""] + @search), class: "heart-active", method: :delete, :confirm=>'Are you sure?', remote: true do %>
                 <i class="fas fa-heart"></i>
               <% end %>
             <% elsif !@cookbook.recipes.include?(recipe) %>
-              <%= link_to cookbook_cookbook_inclusions_path(@cookbook, recipe_id: recipe.id), class: "heart", method: :post, remote: true do %>
+              <%= link_to cookbook_cookbook_inclusions_path(@cookbook, recipe_id: recipe.id, from: controller_name, searched: @search), class: "heart", method: :post, remote: true do %>
                 <i class="fas fa-heart"></i>
                 <% end %>
             <% end %>
@@ -65,5 +65,3 @@
 
   </div>
 </div>
-
-

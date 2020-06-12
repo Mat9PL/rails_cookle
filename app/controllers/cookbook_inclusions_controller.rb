@@ -6,7 +6,8 @@ class CookbookInclusionsController < ApplicationController
     @cookbook_inclusion.save
     # authorize @cookbook_inclusion
     skip_authorization
-    end
+    redirect_to recipes_path(search: {multiple_search: params[:searched]})
+  end
 
   def destroy
     @cookbook_inclusion = CookbookInclusion.find(params[:id])
@@ -14,5 +15,10 @@ class CookbookInclusionsController < ApplicationController
     @cookbook_inclusion.destroy
     # authorize @cookbook_inclusion
     skip_authorization
+    if params[:from] == 'cookbooks'
+      redirect_to cookbook_path(current_user.id)
+    else
+      redirect_to recipes_path(search: {multiple_search: params[:searched]})
     end
+  end
 end

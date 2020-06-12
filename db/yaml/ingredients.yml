@@ -369,6 +369,9 @@
 - :name: praline
 - :name: macaroon
 - :name: peanuts
+- :name: maple syrup
+  :synonyms:
+  - syrup
 - :name: oil
   :forbidden_prefixes:
   - olive
@@ -487,6 +490,9 @@
 - :name: croutons
 - :name: baguette
 - :name: flour
+  :forbidden_prefixes:
+  - corn
+- :name: corn flour
 - :name: pizza dough
 - :name: tortilla
 - :name: puff pastry

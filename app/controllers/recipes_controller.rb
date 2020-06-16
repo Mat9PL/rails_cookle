@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
     @all_recipes = policy_scope(Recipe)
     @found_recipes = select_recipes_including(@searched_ingredient_ids)
     @recipes = @found_recipes.paginate(page: params[:page], per_page: 12)
-    p @recipes
+    # p @recipes
     if Cookbook.where(user: current_user).empty?
       @cookbook = Cookbook.new(user: current_user)
       @cookbook.save
@@ -58,5 +58,16 @@ class RecipesController < ApplicationController
       result['id']
     end
     Recipe.all.ids - r
+    # sql = "NOT ("
+    # r.each_with_index do |el, idx|
+    #   if idx == 0
+    #     sql += "id=#{el}"
+    #   else
+    #     sql += " OR id=#{el}"
+    #   end
+    # end
+    # sql += ");"
+    # # results = ActiveRecord::Base.connection.execute(sql)
+    # Recipe.where(sql)
   end
 end

@@ -66,8 +66,8 @@ def update_ingredients
 end
 
 def update_recipes
-    ### analyze recipes
-    Recipe.all.each { |recipe| recipe.scrape_ingredients! }
+  ### analyze recipes
+  Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 end
 # scrape_urls
 # update_ingredients

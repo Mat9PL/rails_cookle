@@ -26,8 +26,9 @@
       <h2><%= @found_recipes.count %> recipes found:</h2>
     <% end %>
     <div class="listing">
-      <% @recipes.each do |recipe| %>
+      <% @recipes.each do |recipe_id| %>
         <div class="listing-item">
+        <% recipe = Recipe.find(recipe_id) %>
           <%= image_tag recipe.url_image %>
             <% if @cookbook.recipes.include?(recipe) %>
             <%= link_to cookbook_inclusion_path(CookbookInclusion.where(cookbook: @cookbook, recipe: recipe).first, from: controller_name, searched: [""] + @search), class: "heart-active", method: :delete, :confirm=>'Are you sure?', remote: true do %>

@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
     set_search # from params
     set_searched_ingredient_groups # to pre-populate the search bar
     set_found_recipes # to get the number of all the recipes found
-    set_recipes # to get paginated list of recipes to display
+    set_recipes # to get a paginated list of recipes to display
   end
 
   private

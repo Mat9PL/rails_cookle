@@ -1,18 +1,15 @@
 class CookbooksController < ApplicationController
   def show
-    if Cookbook.where(user: current_user).empty?
-      @cookbook = Cookbook.new(user: current_user)
-      @cookbook.save
-    else
-      @cookbook = Cookbook.where(user: current_user).first
-    end
+    set_cookbook
     authorize @cookbook
-    @recipes = @cookbook.recipes
+    set_recipes
   end
-
-  def favourite
-    # si je clique sur le boutton
-
-    # j'ajoute une ligne dans la table cookbook
+  
+  def set_cookbook
+    @cookbook = Cookbook.where(user: current_user).empty? ? Cookbook.create(user: current_user) : Cookbook.where(user: current_user).first
+  end
+  
+  def set_recipes
+    @recipes = @cookbook.recipes
   end
 end

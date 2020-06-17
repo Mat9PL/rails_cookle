@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_092843) do
+ActiveRecord::Schema.define(version: 2020_06_17_225401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,22 +29,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_092843) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_cookbooks_on_user_id"
-  end
-
-  create_table "dispense_inclusions", force: :cascade do |t|
-    t.bigint "dispense_id", null: false
-    t.bigint "ingredient_group_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["dispense_id"], name: "index_dispense_inclusions_on_dispense_id"
-    t.index ["ingredient_group_id"], name: "index_dispense_inclusions_on_ingredient_group_id"
-  end
-
-  create_table "dispenses", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_dispenses_on_user_id"
   end
 
   create_table "doses", force: :cascade do |t|
@@ -95,6 +79,22 @@ ActiveRecord::Schema.define(version: 2020_06_11_092843) do
     t.string "regex"
   end
 
+  create_table "pantries", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_pantries_on_user_id"
+  end
+
+  create_table "pantry_inclusions", force: :cascade do |t|
+    t.bigint "pantry_id", null: false
+    t.bigint "ingredient_group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_group_id"], name: "index_pantry_inclusions_on_ingredient_group_id"
+    t.index ["pantry_id"], name: "index_pantry_inclusions_on_pantry_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -137,11 +137,11 @@ ActiveRecord::Schema.define(version: 2020_06_11_092843) do
   add_foreign_key "cookbook_inclusions", "cookbooks"
   add_foreign_key "cookbook_inclusions", "recipes"
   add_foreign_key "cookbooks", "users"
-  add_foreign_key "dispense_inclusions", "dispenses"
-  add_foreign_key "dispense_inclusions", "ingredient_groups"
-  add_foreign_key "dispenses", "users"
   add_foreign_key "doses", "ingredients"
   add_foreign_key "doses", "recipes"
   add_foreign_key "ingredient_groupers", "ingredient_groups"
   add_foreign_key "ingredient_groupers", "ingredients"
+  add_foreign_key "pantries", "users"
+  add_foreign_key "pantry_inclusions", "ingredient_groups"
+  add_foreign_key "pantry_inclusions", "pantries"
 end

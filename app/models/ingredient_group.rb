@@ -1,7 +1,7 @@
 class IngredientGroup < ApplicationRecord
   has_many :ingredient_groupers, dependent: :destroy
   has_many :ingredients, through: :ingredient_groupers
-  has_many :dispense_inclusions
+  has_many :pantry_inclusions
 
   def self.generate_ingredient_groups(groups)
     groups.keys.each do |key| 

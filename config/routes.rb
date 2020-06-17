@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :cookbooks do
     resources :cookbook_inclusions
   end
-  resources :dispenses do
-    resources :dispense_inclusions
+  resources :pantries do
+    resources :pantry_inclusions
   end
 
   resources :cookbook_inclusions, only: [:destroy]

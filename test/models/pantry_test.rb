@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DispenseTest < ActiveSupport::TestCase
+class PantryTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

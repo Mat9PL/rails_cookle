@@ -12,7 +12,7 @@
           <%= link_to "My cookbook", cookbook_path(current_user.id), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "My pantry", dispense_path(current_user.id), class: "nav-link" %>
+          <%= link_to "My pantry", pantry_path(current_user.id), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <% avatar_url = current_user.facebook_picture_url || "logo avatar.png" %>

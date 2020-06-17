@@ -43,10 +43,10 @@ end
 
 def update_ingredients
   ### destroy previous data
-  DispenseInclusion.destroy_all
-  puts 'dispense_inclusions destroyed'
-  Dispense.destroy_all
-  puts 'dispenses destroyed'
+  PantryInclusion.destroy_all
+  puts 'pantry_inclusions destroyed'
+  Pantry.destroy_all
+  puts 'pantrys destroyed'
   Dose.destroy_all
   puts 'doses destroyed'
   IngredientGroup.destroy_all

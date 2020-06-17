@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
   end
 
   def set_found_recipes
-    @found_recipes = select_recipes_including_only(convert_group_ids_to_ingredient_ids(@search))
+    @found_recipes = select_recipes(convert_group_ids_to_ingredient_ids(@search))
   end
 
   def set_cookbook
@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
     ingredient_ids
   end
 
-  def select_recipes_including_only(ingredient_ids)
+  def select_recipes(ingredient_ids)
     unwanted_ingredient_ids = Ingredient.all.ids - ingredient_ids.uniq
     query = "SELECT DISTINCT recipes.id FROM recipes JOIN doses ON recipes.id = doses.recipe_id "
     unwanted_ingredient_ids.each_with_index do |ingredient_id, idx|

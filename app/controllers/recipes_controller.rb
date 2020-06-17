@@ -47,7 +47,6 @@ class RecipesController < ApplicationController
   def select_recipes_including_only(ingredient_ids)
     unwanted_ingredient_ids = Ingredient.all.ids - ingredient_ids.uniq
     query = "SELECT DISTINCT recipes.id FROM recipes JOIN doses ON recipes.id = doses.recipe_id "
-    # example: WHERE NOT ingredient_id=26523 AND NOT ingredient_id=26522 AND NOT ingredient_id=26521 AND NOT ingredient_id=26520 AND NOT ingredient_id=26519
     unwanted_ingredient_ids.each_with_index do |ingredient_id, idx|
       idx == 0 ? query += "WHERE ingredient_id=#{ingredient_id}" : query += " OR ingredient_id=#{ingredient_id}"
     end

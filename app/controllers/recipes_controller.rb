@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
     policy_scope(Recipe)
+    set_cookbook # for the like buttons on the recipe cards
     set_ingredient_groups # for the select2 in the search bar
     set_search # from params
     set_searched_ingredient_groups # to pre-populate the search bar
@@ -23,6 +24,10 @@ class RecipesController < ApplicationController
 
   def set_found_recipes
     @found_recipes = select_recipes_including_only(convert_group_ids_to_ingredient_ids(@search))
+  end
+
+  def set_cookbook
+    @cookbook = current_user.cookbook ? current_user.cookbook : Cookbook.create(user: current_user)  
   end
 
   def set_ingredient_groups

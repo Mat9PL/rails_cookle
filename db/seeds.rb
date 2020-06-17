@@ -46,7 +46,7 @@ def update_ingredients
   DispenseInclusion.destroy_all
   puts 'dispense_inclusions destroyed'
   Dispense.destroy_all
-  puts 'cookbooks destroyed'
+  puts 'dispenses destroyed'
   Dose.destroy_all
   puts 'doses destroyed'
   IngredientGroup.destroy_all
@@ -66,11 +66,11 @@ def update_ingredients
 end
 
 def update_recipes
-    ### analyze recipes
-    Recipe.all.each { |recipe| recipe.scrape_ingredients! }
+  ### analyze recipes
+  Recipe.all.each { |recipe| recipe.scrape_ingredients! }
 end
 # scrape_urls
-update_ingredients
+# update_ingredients
 
 
 # CookbookInclusion.destroy_all
@@ -81,3 +81,5 @@ update_ingredients
 
 # import_recipes
 update_recipes
+
+

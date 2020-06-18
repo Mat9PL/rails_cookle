@@ -50,6 +50,6 @@ class RecipesController < ApplicationController
     unwanted_ingredient_ids.each_with_index do |ingredient_id, idx|
       idx == 0 ? query += "WHERE ingredient_id=#{ingredient_id}" : query += " OR ingredient_id=#{ingredient_id}"
     end
-    Recipe.all.ids - ActiveRecord::Base.connection.execute(query).map { |result| result['id'] }
+    Recipe.all.order('doses_count DESC').ids - ActiveRecord::Base.connection.execute(query).map { |result| result['id'] }
   end
 end

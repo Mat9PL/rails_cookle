@@ -30,7 +30,7 @@
         <div class="listing-item">
         <% recipe = Recipe.find(recipe_id) %>
           <%= image_tag recipe.url_image %>
-            <% if @cookbook.recipes.include?(recipe) %>
+            <% if @cookbook && @cookbook.recipes.include?(recipe) %>
             <%= link_to cookbook_inclusion_path(CookbookInclusion.where(cookbook: @cookbook, recipe: recipe).first, from: controller_name, searched: [""] + @search), class: "heart-active", method: :delete, :confirm=>'Are you sure?', remote: true do %>
                 <i class="fas fa-heart"></i>
               <% end %>

@@ -27,7 +27,11 @@ class RecipesController < ApplicationController
   end
 
   def set_cookbook
-    @cookbook = current_user.cookbook ? current_user.cookbook : Cookbook.create(user: current_user)  
+    if current_user && current_user.cookbook
+      @cookbook = current_user.cookbook
+    elsif current_user
+      @cookbook = Cookbook.create(user: current_user)
+    end
   end
 
   def set_ingredient_groups
@@ -50,6 +54,6 @@ class RecipesController < ApplicationController
     unwanted_ingredient_ids.each_with_index do |ingredient_id, idx|
       idx == 0 ? query += "WHERE ingredient_id=#{ingredient_id}" : query += " OR ingredient_id=#{ingredient_id}"
     end
-    Recipe.all.order('doses_count DESC').ids - ActiveRecord::Base.connection.execute(query).map { |result| result['id'] }
+    Recipe.all.ids - ActiveRecord::Base.connection.execute(query).map { |result| result['id'] }
   end
 end
